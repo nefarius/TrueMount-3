@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TrueLib.DriveLetter" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAABQAAIAAAAAQAEAAAAAAA=</HashCode>
+      <FileName>DriveLetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.EncryptedContainerFile" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAABAAAA=</HashCode>
+      <FileName>EncryptedContainerFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.EncryptedDisk" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEEgAAAAAAAAACAAIAABAAAAAAAAAA=</HashCode>
+      <FileName>EncryptedDisk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.EncryptedMedia" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAEAAAAAAAQACAAAAiAAAAIACAAAA=</HashCode>
+      <FileName>EncryptedMedia.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TrueLib.EncryptedPartition" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAEgAAAAAAAAACAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>EncryptedPartition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.KeyFile" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>KeyFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.MountOptions" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAoAAAAAAAAAKAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>MountOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Password" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Password.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.SystemDevices" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEBAAAAKACABACAAREggBABELAAASAgAABAEAABQ=</HashCode>
+      <FileName>SystemDevices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.TriggerDevice" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAEkAAAAAAAAAAAAIAACAAAAAAAAAE=</HashCode>
+      <FileName>TriggerDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.TrueCryptConfig" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAgAAAAAQAAAAAAAAgCAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>TrueCryptConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TrueLib.IEncryptedMedia" Collapsed="true">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEncryptedMedia.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TrueLib.DriveLetterType" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>DriveLetter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TrueLib.Shemes" Collapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAgAAAAAAAAAIAAAgAAAAAAAEAAAAAAABAACAAAA=</HashCode>
+      <FileName>Shemes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
