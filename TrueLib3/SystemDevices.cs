@@ -277,6 +277,10 @@ namespace TrueLib
             }
         }
 
+        /// <summary>
+        /// For debugging: returns identity information about all attached disks.
+        /// </summary>
+        /// <returns>A list of disk information.</returns>
         public static List<string> GetLocalDiskPartitions()
         {
             List<string> values = new List<string>();
