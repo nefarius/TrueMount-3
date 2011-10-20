@@ -27,6 +27,11 @@ namespace TrueLib
             this.DiskSignature = signature;
         }
 
+        public override bool IsOnline()
+        {
+            return SystemDevices.IsDiskOnline(DiskCaption, DiskSignature);
+        }
+
         public override bool Equals(object obj)
         {
             EncryptedDisk ep = (EncryptedDisk)obj;

@@ -9,14 +9,14 @@ namespace TrueLib
     /// Describes an encrypted media (can be a disk or a container file).
     /// </summary>
     [Serializable()]
-    public class EncryptedMedia
+    public class EncryptedMedia : IEncryptedMedia
     {
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
         public List<Password> Passwords { get; set; }
         public List<KeyFile> KeyFiles { get; set; }
         public DriveLetter Letter { get; set; }
-        // TODO
+        // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
 
         public EncryptedMedia()
@@ -45,6 +45,11 @@ namespace TrueLib
                 else
                     return string.Empty;
             }
+        }
+
+        public virtual bool IsOnline()
+        {
+            throw new NotImplementedException();
         }
     }
 }

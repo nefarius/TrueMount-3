@@ -45,6 +45,7 @@
     <Compile Include="EncryptedContainerFile.cs" />
     <Compile Include="EncryptedPartition.cs" />
     <Compile Include="EncryptedMedia.cs" />
+    <Compile Include="IEncryptedMedia.cs" />
     <Compile Include="KeyFile.cs" />
     <Compile Include="MountOptions.cs" />
     <Compile Include="Password.cs" />
@@ -53,6 +54,9 @@
     <Compile Include="SystemDevices.cs" />
     <Compile Include="TrueCryptConfig.cs" />
     <Compile Include="TriggerDevice.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassOverview.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

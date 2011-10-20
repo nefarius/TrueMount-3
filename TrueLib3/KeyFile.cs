@@ -13,7 +13,7 @@ namespace TrueLib
         {
             get
             {
-                // TODO
+                // TODO: implement the local cache (download remote content, use it and remove or overwrite it!)
                 return this.LocalPath;
             }
         }

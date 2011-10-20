@@ -17,6 +17,11 @@ namespace TrueLib
             this.PartitionIndex = partitionNr;
         }
 
+        public override bool IsOnline()
+        {
+            return SystemDevices.IsPartitionOnline(DiskCaption, DiskSignature, PartitionIndex);
+        }
+
         public override bool Equals(object obj)
         {
             if (base.Equals((EncryptedDisk)obj))

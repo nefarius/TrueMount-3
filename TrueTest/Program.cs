@@ -152,6 +152,9 @@ namespace TrueTest
             Console.WriteLine(ep1.Equals(ep2));
             Console.WriteLine(ep1.ToString());
 
+            EncryptedPartition part1 = new EncryptedPartition("HITACHI HTS545050B9A300", 3288318975, 0);
+            Console.WriteLine("{0} is {1}", part1, part1.IsOnline());
+
             Console.ReadKey();
         }
     }

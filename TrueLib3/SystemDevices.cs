@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text.RegularExpressions;
@@ -10,6 +9,7 @@ namespace TrueLib
     /// <summary>
     /// Static wrapper for windows system devices.
     /// </summary>
+    // TODO: on release BACK TO INTERNAL!!!
     static class SystemDevices
     {
         // WMI class names
@@ -106,14 +106,30 @@ namespace TrueLib
         }
 
         /// <summary>
+        /// Checks if a given disk is online.
+        /// </summary>
+        /// <param name="caption">The caption of the disk drive.</param>
+        /// <param name="signature">The signature of the disk drive.</param>
+        /// <returns>True or false.</returns>
+        public static bool IsDiskOnline(string caption, uint signature)
+        {
+            var query =
+                from ManagementObject disk in diskDrives.GetInstances()
+                where (string)disk["Caption"] == caption
+                && (uint)disk["Signature"] == signature
+                select disk;
+
+            return (query.Count() > 0);
+        }
+
+        /// <summary>
         /// Checks if a given disk drive partition is online.
         /// </summary>
         /// <param name="caption">The caption of the disk drive.</param>
         /// <param name="signature">The signature of the disk drive.</param>
         /// <param name="partitionIndex">The zero-based partition index.</param>
-        /// <param name="partitionDeviceId">The partition DeviceID to check.</param>
         /// <returns>Returns true if partition is online, else false.</returns>
-        public static bool IsPartitionOnline(string caption, uint signature, uint partitionIndex, string partitionDeviceId)
+        public static bool IsPartitionOnline(string caption, uint signature, uint partitionIndex)
         {
             var partitionQuery =
                 from ManagementObject disk in diskDrives.GetInstances()
@@ -121,7 +137,6 @@ namespace TrueLib
                 && (uint)disk["Signature"] == signature
                 from ManagementObject partition in disk.GetRelated(Win32_DiskPartition)
                 where (uint)partition["Index"] == partitionIndex
-                && (string)partition["DeviceID"] == partitionDeviceId
                 select partition;
 
             return (partitionQuery.Count() > 0);
@@ -260,6 +275,22 @@ namespace TrueLib
                 caption = (string)disk_drive["Caption"];
                 signature = (uint)disk_drive["Signature"];
             }
+        }
+
+        public static List<string> GetLocalDiskPartitions()
+        {
+            List<string> values = new List<string>();
+
+            foreach (ManagementObject disk in DiskDrives)
+            {
+                foreach (ManagementObject partition in disk.GetRelated(Win32_DiskPartition))
+                {
+                    values.Add(string.Format("Disk caption({0}), signature({1}); Partition index({2})",
+                        disk["Caption"], disk["Signature"], partition["Index"]));
+                }
+            }
+
+            return values;
         }
 
         /// <summary>
