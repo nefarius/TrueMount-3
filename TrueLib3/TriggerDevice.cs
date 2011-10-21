@@ -3,7 +3,7 @@
 namespace TrueLib
 {
     [Serializable()]
-    class TriggerDevice
+    class TriggerDevice : IPhysicalMedia
     {
         public string Caption { get; set; }
         public uint Signature { get; set; }
@@ -31,6 +31,11 @@ namespace TrueLib
         public override string ToString()
         {
             return this.Caption;
+        }
+
+        public bool IsOnline()
+        {
+            return SystemDevices.IsPartitionOnline(Caption, Signature, PartitionIndex);
         }
     }
 }

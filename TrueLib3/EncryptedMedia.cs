@@ -9,7 +9,7 @@ namespace TrueLib
     /// Describes an encrypted media (can be a disk or a container file).
     /// </summary>
     [Serializable()]
-    public class EncryptedMedia : IEncryptedMedia
+    public class EncryptedMedia : IPhysicalMedia
     {
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
