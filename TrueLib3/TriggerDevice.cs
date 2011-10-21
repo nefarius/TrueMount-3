@@ -14,10 +14,10 @@ namespace TrueLib
         {
             if (obj.GetType() != typeof(System.DBNull))
             {
-                TriggerDevice kd = (TriggerDevice)obj;
-                if (Caption == kd.Caption &&
-                    Signature == kd.Signature &&
-                    PartitionIndex == kd.PartitionIndex)
+                TriggerDevice td = (TriggerDevice)obj;
+                if (Caption == td.Caption &&
+                    Signature == td.Signature &&
+                    PartitionIndex == td.PartitionIndex)
                     return true;
             }
             return false;
