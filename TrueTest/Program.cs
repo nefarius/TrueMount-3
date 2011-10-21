@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Management;
 using System.Runtime.InteropServices;
+using Dolinay;
 
 namespace TrueTest
 {
@@ -155,7 +156,17 @@ namespace TrueTest
             EncryptedPartition part1 = new EncryptedPartition("HITACHI HTS545050B9A300", 3288318975, 0);
             Console.WriteLine("{0} is {1}", part1, part1.IsOnline());
 
+            TriggerDevice td1 = new TriggerDevice();
+
+            DriveDetector dd = new DriveDetector();
+            dd.DeviceArrived += new DriveDetectorEventHandler(dd_DeviceArrived);
+
             Console.ReadKey();
+        }
+
+        static void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
+        {
+            Console.WriteLine(e.Drive);
         }
     }
 }

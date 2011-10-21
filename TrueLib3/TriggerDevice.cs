@@ -3,7 +3,7 @@
 namespace TrueLib
 {
     [Serializable()]
-    class TriggerDevice : IPhysicalMedia
+    public class TriggerDevice : IPhysicalMedia
     {
         public string Caption { get; set; }
         public uint Signature { get; set; }
