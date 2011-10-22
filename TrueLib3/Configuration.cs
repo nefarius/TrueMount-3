@@ -9,6 +9,7 @@ using System.Resources;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace TrueLib
 {
@@ -35,7 +36,7 @@ namespace TrueLib
         public bool WarnOnExit { get; set; }
 
         private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        private const string VALUE_NAME = "TrueMount 3";
+        private const string PRODUCT_NAME = "TrueMount 3";
         #endregion
 
         public Configuration()
@@ -53,25 +54,6 @@ namespace TrueLib
             ApplicationLocation = CurrentApplicationLocation;
             CheckForUpdates = true;
             WarnOnExit = true;
-        }
-
-        /// <summary>
-        /// Checks and initializes all null references.
-        /// </summary>
-        public void InitReferences()
-        {
-            if (TrueCrypt == null)
-                TrueCrypt = new TrueCryptConfig();
-            if (KeyDevices == null)
-                KeyDevices = new List<UsbKeyDevice>();
-            if (EncryptedDiskPartitions == null)
-                EncryptedDiskPartitions = new List<EncryptedDiskPartition>();
-            if (EncryptedContainerFiles == null)
-                EncryptedContainerFiles = new List<EncryptedContainerFile>();
-            if (Language == null)
-                Language = System.Threading.Thread.CurrentThread.CurrentUICulture;
-            if (string.IsNullOrEmpty(ApplicationLocation))
-                ApplicationLocation = CurrentApplicationLocation;
         }
 
         /// <summary>
@@ -131,29 +113,13 @@ namespace TrueLib
         }
 
         /// <summary>
-        /// Resource reference of available included user interface translations.
-        /// </summary>
-        public static ResourceManager LanguageDictionary
-        {
-            get { return new ResourceManager("TrueMount.LanguageDictionary", typeof(TrueMountMainWindow).Assembly); }
-        }
-
-        /// <summary>
-        /// Directory where the application updates get saved temporary.
-        /// </summary>
-        public static string UpdateSavePath
-        {
-            get { return Path.Combine(ConfigurationPath, "update"); }
-        }
-
-        /// <summary>
         /// Contains the path where the configuration file and updates are stored.
         /// </summary>
         public static string ConfigurationPath
         {
             get
             {
-                string appDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TrueMount");
+                string appDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), PRODUCT_NAME);
 #if DEBUG
                 appDataDir = Path.Combine(appDataDir, "debug");
 #endif
@@ -179,7 +145,7 @@ namespace TrueLib
         /// </summary>
         public string ApplicationName
         {
-            get { return VALUE_NAME; }
+            get { return PRODUCT_NAME; }
         }
 
         /// <summary>
@@ -188,7 +154,7 @@ namespace TrueLib
         public void SetAutoStart()
         {
             RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
-            key.SetValue(VALUE_NAME, CurrentApplicationLocation);
+            key.SetValue(PRODUCT_NAME, CurrentApplicationLocation);
         }
 
         /// <summary>
@@ -197,7 +163,7 @@ namespace TrueLib
         public void UnSetAutoStart()
         {
             RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
-            key.DeleteValue(VALUE_NAME);
+            key.DeleteValue(PRODUCT_NAME);
         }
 
         /// <summary>
@@ -211,24 +177,10 @@ namespace TrueLib
                 if (key == null)
                     return false;
 
-                string value = (string)key.GetValue(VALUE_NAME);
+                string value = (string)key.GetValue(PRODUCT_NAME);
                 if (value == null)
                     return false;
                 return (value == CurrentApplicationLocation);
-            }
-        }
-
-        /// <summary>
-        /// Checks if there is at least one valid key device.
-        /// </summary>
-        public bool IsKeyDeviceConfigOk
-        {
-            get
-            {
-                if (KeyDevices.Count > 0)
-                    return true;
-                else
-                    return false;
             }
         }
 
@@ -238,41 +190,28 @@ namespace TrueLib
         /// <param name="current">The current active configuration object.</param>
         public static void SaveConfiguration(Configuration current)
         {
-            FileStream fsSave = new FileStream(ConfigurationFile, FileMode.Create);
-            BinaryFormatter binFormat = new BinaryFormatter();
-            binFormat.Serialize(fsSave, current);
-            fsSave.Close();
+            using(FileStream fsSave = new FileStream(ConfigurationFile, FileMode.Create))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(Configuration));
+                xml.Serialize(fsSave, current);
+            }
         }
 
         /// <summary>
         /// Opens the configuration from file.
         /// </summary>
         /// <returns>Returns stored or new empty default configuration reference.</returns>
-        public static Configuration OpenConfiguration()
+        public static Configuration LoadConfiguration()
         {
             Configuration stored = new Configuration();
 
             if (File.Exists(ConfigurationFile))
             {
-                FileStream fsFetch = null;
-                try
+                using (FileStream fsFetch = new FileStream(ConfigurationFile, FileMode.Open))
                 {
-                    fsFetch = new FileStream(ConfigurationFile, FileMode.Open);
-                    BinaryFormatter binFormat = new BinaryFormatter();
-                    stored = (Configuration)binFormat.Deserialize(fsFetch);
+                    XmlSerializer xml = new XmlSerializer(typeof(Configuration));
+                    stored = (Configuration)xml.Deserialize(fsFetch);
                 }
-                catch (SerializationException)
-                {
-                    return stored;
-                }
-                finally
-                {
-                    if (fsFetch != null)
-                        fsFetch.Close();
-                }
-
-                // compatibility workaround: initiates every null reference to avoid crashes
-                stored.InitReferences();
             }
 
             return stored;

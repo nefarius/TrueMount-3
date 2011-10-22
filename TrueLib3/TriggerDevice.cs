@@ -63,5 +63,15 @@ namespace TrueLib
                 return false;
             }
         }
+
+        public void Denote(string drive)
+        {
+            string file = string.Format("{0}tm3identity", drive);
+            using (StreamWriter sw = new StreamWriter(file))
+            {
+                sw.WriteLine(Guid.ToString());
+            }
+            File.SetAttributes(file, File.GetAttributes(file) | FileAttributes.Hidden | FileAttributes.System);
+        }
     }
 }
