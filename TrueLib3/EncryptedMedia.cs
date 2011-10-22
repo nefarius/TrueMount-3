@@ -13,20 +13,23 @@ namespace TrueLib
     {
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
+        public bool ForceUnmount { get; set; }
         public List<Password> Passwords { get; set; }
         public List<KeyFile> KeyFiles { get; set; }
         public DriveLetter Letter { get; set; }
         // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
+        public List<TriggerDevice> TriggerDevices { get; set; }
 
         public EncryptedMedia()
         {
             this.Passwords = new List<Password>();
             this.KeyFiles = new List<KeyFile>();
+            this.TriggerDevices = new List<TriggerDevice>();
         }
 
         /// <summary>
-        /// Returns a ready-to-use command line sring with chosen arguments.
+        /// Returns a ready-to-use command line string with chosen arguments.
         /// </summary>
         public string KeyFilesArgumentLine
         {
