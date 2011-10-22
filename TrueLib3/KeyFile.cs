@@ -1,10 +1,11 @@
 ﻿using System.Text;
 using System;
+using System.Xml.Serialization;
 
 namespace TrueLib
 {
     [Serializable()]
-    public class KeyFile : Uri
+    public class KeyFile
     {
         /// <summary>
         /// The file name of the key file's local copy.
@@ -14,11 +15,21 @@ namespace TrueLib
             get
             {
                 // TODO: implement the local cache (download remote content, use it and remove or overwrite it!)
-                return this.LocalPath;
+                return string.Empty;
             }
         }
 
-        public KeyFile(string uri) : base(uri) { }
+        private string _uri = string.Empty;
+        [XmlIgnore]
+        public Uri Location
+        {
+            get { return new Uri(_uri); }
+            set { _uri = value.ToString(); }
+        }
+
+        private KeyFile() { }
+        public KeyFile(string uri) { Location = new Uri(uri); }
+        public KeyFile(Uri uri) { Location = uri; }
 
         /// <summary>
         /// Creates a new key file.

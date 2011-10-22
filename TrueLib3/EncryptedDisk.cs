@@ -15,6 +15,8 @@ namespace TrueLib
         /// </summary>
         public uint DiskSignature { get; set; }
 
+        public EncryptedDisk() { }
+
         /// <summary>
         /// Creates a new disk and assigns caption, signature.
         /// </summary>

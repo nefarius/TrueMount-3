@@ -10,11 +10,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Threading;
 
 namespace TrueLib
 {
     [Serializable()]
-    class Configuration
+    public class Configuration
     {
         #region Definitions, Variables
         public bool FirstStart { get; set; }
@@ -31,27 +32,27 @@ namespace TrueLib
         public bool UnmountWarning { get; set; }
         public bool DisableBalloons { get; set; }
         public int BalloonTimePeriod { get; set; }
-        public string ApplicationLocation { get; set; }
         public bool CheckForUpdates { get; set; }
         public bool WarnOnExit { get; set; }
 
         private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private const string PRODUCT_NAME = "TrueMount 3";
+        private const string CONFIG_FILEN = "config.xml";
         #endregion
 
         public Configuration()
         {
             // initiate empty references
             TrueCrypt = new TrueCryptConfig();
-            KeyDevices = new List<UsbKeyDevice>();
-            EncryptedDiskPartitions = new List<EncryptedDiskPartition>();
+            TriggerDevices = new List<TriggerDevice>();
+            EncryptedDisks = new List<EncryptedDisk>();
+            EncryptedPartitions = new List<EncryptedPartition>();
             EncryptedContainerFiles = new List<EncryptedContainerFile>();
+            Language = Thread.CurrentThread.CurrentUICulture;
             
             // set default values
-            OnlyOneInstance = true;
             BalloonTimePeriod = 3000;
             FirstStart = true;
-            ApplicationLocation = CurrentApplicationLocation;
             CheckForUpdates = true;
             WarnOnExit = true;
         }
@@ -61,7 +62,7 @@ namespace TrueLib
         /// </summary>
         public static string LauncherLocation
         {
-            get { return Path.Combine(CurrentApplicationPath, "TCLauncher.exe"); }
+            get { return Path.Combine(AssemblyPath, "TCLauncher.exe"); }
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace TrueLib
         /// </summary>
         public static string UpdaterLocation
         {
-            get { return Path.Combine(CurrentApplicationPath, "updater.exe"); }
+            get { return Path.Combine(AssemblyPath, "updater.exe"); }
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace TrueLib
         /// <summary>
         /// Full name of the current running assembly instance.
         /// </summary>
-        public static string CurrentApplicationLocation
+        public static string AssemblyLocation
         {
             get { return Assembly.GetExecutingAssembly().Location; }
         }
@@ -99,9 +100,9 @@ namespace TrueLib
         /// <summary>
         /// Path name of the current running assembly instance.
         /// </summary>
-        public static string CurrentApplicationPath
+        public static string AssemblyPath
         {
-            get { return Path.GetDirectoryName(CurrentApplicationLocation); }
+            get { return Path.GetDirectoryName(AssemblyLocation); }
         }
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace TrueLib
         {
             get
             {
-                return Path.Combine(ConfigurationPath, "config.dat");
+                return Path.Combine(ConfigurationPath, CONFIG_FILEN);
             }
         }
 
@@ -154,7 +155,7 @@ namespace TrueLib
         public void SetAutoStart()
         {
             RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
-            key.SetValue(PRODUCT_NAME, CurrentApplicationLocation);
+            key.SetValue(PRODUCT_NAME, AssemblyLocation);
         }
 
         /// <summary>
@@ -180,7 +181,38 @@ namespace TrueLib
                 string value = (string)key.GetValue(PRODUCT_NAME);
                 if (value == null)
                     return false;
-                return (value == CurrentApplicationLocation);
+                return (value == AssemblyLocation);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the locally stored configuration.
+        /// </summary>
+        public static Configuration Local
+        {
+            get
+            {
+                Configuration stored = new Configuration();
+
+                if (File.Exists(ConfigurationFile))
+                {
+                    using (FileStream fsFetch = new FileStream(ConfigurationFile, FileMode.Open))
+                    {
+                        XmlSerializer xml = new XmlSerializer(typeof(Configuration));
+                        stored = (Configuration)xml.Deserialize(fsFetch);
+                    }
+                }
+
+                return stored;
+            }
+
+            set
+            {
+                using (FileStream fsSave = new FileStream(ConfigurationFile, FileMode.Create))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(Configuration));
+                    xml.Serialize(fsSave, value);
+                }
             }
         }
 
@@ -215,75 +247,6 @@ namespace TrueLib
             }
 
             return stored;
-        }
-
-        /// <summary>
-        /// Tries to start an updater instance and waits for its response.
-        /// </summary>
-        /// <param name="silent">Set true if you want to suppress dialogs.</param>
-        /// <returns>Returns true on successful update, else false.</returns>
-        public bool InvokeUpdateProcess(bool silent = false)
-        {
-            string lastAppStartPath = Path.GetDirectoryName(this.ApplicationLocation);
-            // valid paths are needed to start the updater
-            if (!string.IsNullOrEmpty(lastAppStartPath) && !string.IsNullOrEmpty(UpdateSavePath))
-            {
-                try
-                {
-                    Process updater = Process.Start(UpdaterLocation);
-
-                    using (NamedPipeServerStream pipeServer = new NamedPipeServerStream("TrueMountUpdater"))
-                    {
-                        pipeServer.WaitForConnection();
-
-                        using (StreamWriter outStream = new StreamWriter(pipeServer))
-                        {
-                            // silent mode?
-                            outStream.WriteLine(silent);
-                            // directory to store update in
-                            outStream.WriteLine(Configuration.UpdateSavePath);
-                            // directory to patch
-                            outStream.WriteLine(lastAppStartPath);
-                            // go!
-                            outStream.Flush();
-                        }
-                    }
-
-                    // wait for updater to finish and continue or exit
-                    while (!updater.WaitForExit(1000)) ;
-                    if (updater.ExitCode != 2)
-                        Environment.Exit(0);
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Checks if one or more volumes need a password dialog.
-        /// </summary>
-        public bool IsUserPasswordNeeded
-        {
-            get
-            {
-                foreach (EncryptedMedia encMedia in this.EncryptedDiskPartitions)
-                {
-                    if (encMedia.FetchUserPassword)
-                        return true;
-                }
-
-                foreach (EncryptedMedia encMedia in this.EncryptedContainerFiles)
-                {
-                    if (encMedia.FetchUserPassword)
-                        return true;
-                }
-
-                return false;
-            }
         }
     }
 }

@@ -23,6 +23,15 @@ namespace TrueTest
         {
             DriveDetector dd = new DriveDetector();
             dd.DeviceArrived += new DriveDetectorEventHandler(dd_DeviceArrived);
+
+            Configuration cfg = Configuration.Local;
+
+            logBox.AppendText(cfg.FirstStart.ToString());
+
+            if (cfg.FirstStart)
+                cfg.FirstStart = !cfg.FirstStart;
+
+            Configuration.Local = cfg;
         }
 
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
