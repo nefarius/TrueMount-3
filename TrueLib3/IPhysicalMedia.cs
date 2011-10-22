@@ -7,6 +7,6 @@ namespace TrueLib
 {
     interface IPhysicalMedia
     {
-        bool IsOnline();
+        bool IsOnline { get; }
     }
 }

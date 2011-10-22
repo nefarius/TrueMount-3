@@ -17,9 +17,9 @@ namespace TrueLib
             this.PartitionIndex = partitionNr;
         }
 
-        public override bool IsOnline()
+        public override bool IsOnline
         {
-            return SystemDevices.IsPartitionOnline(DiskCaption, DiskSignature, PartitionIndex);
+            get { return SystemDevices.IsPartitionOnline(DiskCaption, DiskSignature, PartitionIndex); }
         }
 
         public override bool Equals(object obj)

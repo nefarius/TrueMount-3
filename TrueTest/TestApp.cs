@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Dolinay;
 using System.IO;
+using TrueLib;
 
 namespace TrueTest
 {
@@ -27,6 +28,10 @@ namespace TrueTest
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
         {
             logBox.AppendText(e.Drive + Environment.NewLine);
+
+            TriggerDevice td = new TriggerDevice();
+            if (td.IsOnline)
+                MessageBox.Show("Online");
 
             string file = string.Format("{0}tm3identity", e.Drive);
             using (StreamWriter sw = new StreamWriter(file))

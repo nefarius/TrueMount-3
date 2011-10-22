@@ -27,9 +27,9 @@ namespace TrueLib
             this.DiskSignature = signature;
         }
 
-        public override bool IsOnline()
+        public override bool IsOnline
         {
-            return SystemDevices.IsDiskOnline(DiskCaption, DiskSignature);
+            get { return SystemDevices.IsDiskOnline(DiskCaption, DiskSignature); }
         }
 
         public override bool Equals(object obj)

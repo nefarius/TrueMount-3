@@ -47,9 +47,6 @@ namespace TrueLib
             }
         }
 
-        public virtual bool IsOnline()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual bool IsOnline { get; set; }
     }
 }
