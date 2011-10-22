@@ -67,9 +67,10 @@
   <Class Name="TrueLib.TriggerDevice" Collapsed="true">
     <Position X="9" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAEkAAAAAAAAAAAAIAACAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEkAAAAAAAAACABIAAAAAAAAAAAgA=</HashCode>
       <FileName>TriggerDevice.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="TrueLib.TrueCryptConfig" Collapsed="true">
     <Position X="5.5" Y="2.5" Width="1.5" />
@@ -78,11 +79,11 @@
       <FileName>TrueCryptConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="TrueLib.IEncryptedMedia" Collapsed="true">
+  <Interface Name="TrueLib.IPhysicalMedia" Collapsed="true">
     <Position X="9" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IEncryptedMedia.cs</FileName>
+      <FileName>IPhysicalMedia.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="TrueLib.DriveLetterType" Collapsed="true">
