@@ -49,7 +49,7 @@ namespace TrueLib
             {
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    string path = string.Format("{0}tm3identity", drive.RootDirectory);
+                    string path = Path.Combine(drive.RootDirectory.Name, Configuration.IdentityFile);
                     if(File.Exists(path))
                     {
                         using (StreamReader sr = new StreamReader(path))

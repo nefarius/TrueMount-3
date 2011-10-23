@@ -57,7 +57,7 @@ namespace TrueLib
             WarnOnExit = true;
         }
 
-        public string IdentityFile
+        public static string IdentityFile
         {
             get { return LDIDENT_FILE; }
         }
