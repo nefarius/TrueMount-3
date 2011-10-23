@@ -27,7 +27,7 @@ namespace TrueTest
 
             Configuration cfg = Configuration.Local;
 
-            logBox.AppendText(cfg.FirstStart.ToString());
+            //logBox.AppendText(cfg.FirstStart.ToString());
 
             if (cfg.FirstStart)
                 cfg.FirstStart = !cfg.FirstStart;

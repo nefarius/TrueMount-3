@@ -21,8 +21,9 @@ namespace TrueLib
                         return this.LocalPath;
                     case Schemes.HTTP:
                     case Schemes.HTTPS:
+                    case Schemes.FTP:
                         WebClient web = new WebClient();
-                        string lPath = Path.Combine(Configuration.TempPath, "test.zip");
+                        string lPath = Path.Combine(Configuration.TempPath, Path.GetFileName(this.LocalPath));
                         web.DownloadFile(this, lPath);
                         return lPath;
                 }
