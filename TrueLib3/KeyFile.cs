@@ -6,6 +6,8 @@ using AlexPilotti.FTPS.Client;
 using AlexPilotti.FTPS.Common;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Diagnostics;
+using System.Threading;
 
 namespace TrueLib
 {
@@ -20,6 +22,8 @@ namespace TrueLib
             get
             {
                 string lPath = Path.Combine(Configuration.TempPath, Path.GetFileName(this.LocalPath));
+                string user = this.UserInfo.Split(':')[0];
+                string pass = this.UserInfo.Split(':')[1];
 
                 switch ((Schemes)Enum.Parse(typeof(Schemes), this.Scheme, true))
                 {
@@ -28,30 +32,83 @@ namespace TrueLib
                     case Schemes.HTTP:
                     case Schemes.HTTPS:
                     case Schemes.FTP:
-                        using(WebClient web = new WebClient())
+                        using (WebClient web = new WebClient())
                         {
                             web.DownloadFile(this, lPath);
                         }
                         return lPath;
                     case Schemes.FTPeS:
                         ServicePointManager.ServerCertificateValidationCallback = ValidateServerCertficate;
-                        using(FTPSClient ftps = new FTPSClient())
+                        using (FTPSClient ftps = new FTPSClient())
                         {
-                            string user = this.UserInfo.Split(':')[0];
-                            string pass = this.UserInfo.Split(':')[1];
                             NetworkCredential login = new NetworkCredential(user, pass);
-                            ftps.Connect(this.Host, 
-                                login, 
-                                ESSLSupportMode.CredentialsRequired | ESSLSupportMode.DataChannelRequested, 
+                            ftps.Connect(this.Host,
+                                login,
+                                ESSLSupportMode.CredentialsRequired | ESSLSupportMode.DataChannelRequested,
                                 new RemoteCertificateValidationCallback(ValidateServerCertficate));
                             ftps.GetFile(this.LocalPath, lPath);
                         }
+                        return lPath;
+                    case Schemes.SFTP:
+                        Process winscp = new Process();
+                        winscp.StartInfo.FileName = "winscp.com";
+                        winscp.StartInfo.UseShellExecute = false;
+                        winscp.StartInfo.CreateNoWindow = true;
+                        winscp.StartInfo.RedirectStandardInput = true;
+                        winscp.StartInfo.RedirectStandardOutput = true;
+                        winscp.Start();
+
+                        winscp.StandardInput.WriteLine("option batch abort");
+                        winscp.StandardInput.WriteLine("option confirm off");
+                        // establish connection to server
+                        string open = string.Format("open -hostkey=\"{2}\" {0}@{1}", user, this.Host, _hostFingerprint);
+                        winscp.StandardInput.WriteLine(open);
+                        // send password
+                        winscp.StandardInput.WriteLine(pass);
+                        // change to desired directory on server
+                        string cd = string.Format("cd {0}", Path.GetDirectoryName(this.LocalPath).Replace('\\', '/'));
+                        winscp.StandardInput.WriteLine(cd);
+                        // set transfer mode
+                        winscp.StandardInput.WriteLine("option transfer binary");
+                        // download the file to local directory
+                        string get = string.Format("get \"{0}\" \"{1}\"", Path.GetFileName(this.LocalPath), lPath);
+                        winscp.StandardInput.WriteLine(get);
+                        // close the session
+                        winscp.StandardInput.WriteLine("close");
+                        // exit WinSCP
+                        winscp.StandardInput.WriteLine("exit");
+
+                        // close input stream
+                        winscp.StandardInput.Close();
+                        string output = winscp.StandardOutput.ReadToEnd();
+
+                        // Wait for process to completely shut down
+                        winscp.WaitForExit();
                         return lPath;
                     default:
                         break;
                 }
 
                 throw new ArgumentException("Unsupported scheme provided!");
+            }
+        }
+
+        private string _hostFingerprint = string.Empty;
+        public string HostFingerprint
+        {
+            get
+            {
+                if (this.Scheme.Equals(Schemes.SFTP.ToString(), StringComparison.CurrentCultureIgnoreCase))
+                    return _hostFingerprint;
+                else
+                    return null;
+            }
+            set
+            {
+                if (this.Scheme.Equals(Schemes.SFTP.ToString(), StringComparison.CurrentCultureIgnoreCase))
+                    _hostFingerprint = value;
+                else
+                    throw new ArgumentException("The current scheme doesn't match the required protocol SFTP.");
             }
         }
 
