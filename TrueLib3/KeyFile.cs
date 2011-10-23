@@ -2,6 +2,10 @@
 using System;
 using System.Net;
 using System.IO;
+using AlexPilotti.FTPS.Client;
+using AlexPilotti.FTPS.Common;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace TrueLib
 {
@@ -15,17 +19,36 @@ namespace TrueLib
         {
             get
             {
-                switch((Schemes)Enum.Parse(typeof(Schemes), this.Scheme, true))
+                string lPath = Path.Combine(Configuration.TempPath, Path.GetFileName(this.LocalPath));
+
+                switch ((Schemes)Enum.Parse(typeof(Schemes), this.Scheme, true))
                 {
                     case Schemes.File:
                         return this.LocalPath;
                     case Schemes.HTTP:
                     case Schemes.HTTPS:
                     case Schemes.FTP:
-                        WebClient web = new WebClient();
-                        string lPath = Path.Combine(Configuration.TempPath, Path.GetFileName(this.LocalPath));
-                        web.DownloadFile(this, lPath);
+                        using(WebClient web = new WebClient())
+                        {
+                            web.DownloadFile(this, lPath);
+                        }
                         return lPath;
+                    case Schemes.FTPeS:
+                        ServicePointManager.ServerCertificateValidationCallback = ValidateServerCertficate;
+                        using(FTPSClient ftps = new FTPSClient())
+                        {
+                            string user = this.UserInfo.Split(':')[0];
+                            string pass = this.UserInfo.Split(':')[1];
+                            NetworkCredential login = new NetworkCredential(user, pass);
+                            ftps.Connect(this.Host, 
+                                login, 
+                                ESSLSupportMode.CredentialsRequired | ESSLSupportMode.DataChannelRequested, 
+                                new RemoteCertificateValidationCallback(ValidateServerCertficate));
+                            ftps.GetFile(this.LocalPath, lPath);
+                        }
+                        return lPath;
+                    default:
+                        break;
                 }
 
                 throw new ArgumentException("Unsupported scheme provided!");
@@ -60,6 +83,11 @@ namespace TrueLib
         {
             return new KeyFile(string.Format("{0}://{1}:{2}@{3}/{4}",
                 sheme, user, pass, host, path));
+        }
+
+        private static bool ValidateServerCertficate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
         }
     }
 }

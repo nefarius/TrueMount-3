@@ -41,7 +41,7 @@ namespace TrueTest
             //p1.HideWindow = true;
             //p1.Launch();
 
-            KeyFile kf1 = new KeyFile("http://nefarius.at/wp-content/uploads/2011/10/100OLYMP.zip");
+            KeyFile kf1 = new KeyFile("ftpes://nefarius:1111@localhost/ultravnc.ini");
             logBox.AppendText(kf1.CachedFileName);
         }
 
