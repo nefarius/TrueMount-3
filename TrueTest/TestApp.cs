@@ -40,9 +40,6 @@ namespace TrueTest
             p1.Background = true;
             //p1.HideWindow = true;
             //p1.Launch();
-
-            KeyFile kf1 = new KeyFile("sftp://nefarius:1111@example.net/home/nefarius/udpflood.c");
-            logBox.AppendText(kf1.CachedFileName);
         }
 
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
