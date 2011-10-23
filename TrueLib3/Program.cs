@@ -30,6 +30,7 @@ namespace TrueLib
             p.StartInfo.FileName = Executable;
             p.StartInfo.Arguments = ArgumentLine;
             p.StartInfo.WindowStyle = (HideWindow) ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal;
+            p.StartInfo.CreateNoWindow = HideWindow;
 
             Thread.Sleep(Delay);
             p.Start();
