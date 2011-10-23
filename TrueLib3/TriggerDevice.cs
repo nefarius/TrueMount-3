@@ -66,7 +66,7 @@ namespace TrueLib
 
         public void Denote(string drive)
         {
-            string file = string.Format("{0}tm3identity", drive);
+            string file = Path.Combine(drive, Configuration.IdentityFile);
             using (StreamWriter sw = new StreamWriter(file))
             {
                 sw.WriteLine(Guid.ToString());
