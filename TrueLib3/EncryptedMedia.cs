@@ -28,6 +28,8 @@ namespace TrueLib
             this.Passwords = new List<Password>();
             this.KeyFiles = new List<KeyFile>();
             this.TriggerDevices = new List<TriggerDevice>();
+            this.PreMountPrograms = new List<Program>();
+            this.PostMountPrograms = new List<Program>();
         }
 
         /// <summary>
