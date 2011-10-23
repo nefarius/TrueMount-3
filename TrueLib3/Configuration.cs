@@ -37,6 +37,7 @@ namespace TrueLib
         private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private const string PRODUCT_NAME = "TrueMount 3";
         private const string CONFIG_FILEN = "config.bin";
+        private const string LDIDENT_FILE = "tm3identity";
         #endregion
 
         public Configuration()
@@ -54,6 +55,11 @@ namespace TrueLib
             FirstStart = true;
             CheckForUpdates = true;
             WarnOnExit = true;
+        }
+
+        public string IdentityFile
+        {
+            get { return LDIDENT_FILE; }
         }
 
         public static string TempPath
