@@ -71,7 +71,8 @@ namespace TrueLib
             {
                 sw.WriteLine(Guid.ToString());
             }
-            File.SetAttributes(file, File.GetAttributes(file) | FileAttributes.Hidden | FileAttributes.System);
+            File.SetAttributes(file, File.GetAttributes(file) | 
+                FileAttributes.Hidden | FileAttributes.System);
         }
     }
 }
