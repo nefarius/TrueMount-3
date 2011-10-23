@@ -20,6 +20,8 @@ namespace TrueLib
         // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
         public List<TriggerDevice> TriggerDevices { get; set; }
+        public List<Program> PreMountPrograms { get; set; }
+        public List<Program> PostMountPrograms { get; set; }
 
         public EncryptedMedia()
         {
