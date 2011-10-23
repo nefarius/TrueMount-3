@@ -201,6 +201,14 @@ namespace TrueLib
         }
 
         /// <summary>
+        /// Saves the current configuration.
+        /// </summary>
+        public void Save()
+        {
+            Configuration.Local = this;
+        }
+
+        /// <summary>
         /// Gets or sets the locally stored configuration.
         /// </summary>
         public static Configuration Local
