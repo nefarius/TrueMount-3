@@ -1,5 +1,7 @@
 ﻿using System.Text;
 using System;
+using System.Net;
+using System.IO;
 
 namespace TrueLib
 {
@@ -13,8 +15,19 @@ namespace TrueLib
         {
             get
             {
-                // TODO: implement the local cache (download remote content, use it and remove or overwrite it!)
-                return this.LocalPath;
+                switch((Schemes)Enum.Parse(typeof(Schemes), this.Scheme, true))
+                {
+                    case Schemes.File:
+                        return this.LocalPath;
+                    case Schemes.HTTP:
+                    case Schemes.HTTPS:
+                        WebClient web = new WebClient();
+                        string lPath = Path.Combine(Configuration.TempPath, "test.zip");
+                        web.DownloadFile(this, lPath);
+                        return lPath;
+                }
+
+                throw new ArgumentException("Unsupported scheme provided!");
             }
         }
 
@@ -27,7 +40,7 @@ namespace TrueLib
         /// <param name="host">The hostname.</param>
         /// <param name="path">The path.</param>
         /// <returns></returns>
-        public static KeyFile BuildUri(Shemes sheme, string host, string path)
+        public static KeyFile BuildUri(Schemes sheme, string host, string path)
         {
             return new KeyFile(string.Format("{0}://{1}/{2}",
                 sheme, host, path));
@@ -42,7 +55,7 @@ namespace TrueLib
         /// <param name="user"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static KeyFile BuildUri(Shemes sheme, string host, string path, string user, string pass)
+        public static KeyFile BuildUri(Schemes sheme, string host, string path, string user, string pass)
         {
             return new KeyFile(string.Format("{0}://{1}:{2}@{3}/{4}",
                 sheme, user, pass, host, path));

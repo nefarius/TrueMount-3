@@ -56,6 +56,16 @@ namespace TrueLib
             WarnOnExit = true;
         }
 
+        public static string TempPath
+        {
+            get 
+            {
+                string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), PRODUCT_NAME);
+                Directory.CreateDirectory(dir);
+                return dir;
+            }
+        }
+
         /// <summary>
         /// Full path to TrueCrypt IPC launcher.
         /// </summary>

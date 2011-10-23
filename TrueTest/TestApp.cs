@@ -39,7 +39,10 @@ namespace TrueTest
             //p1.Delay = new TimeSpan(0, 0, 5);
             p1.Background = true;
             //p1.HideWindow = true;
-            p1.Launch();
+            //p1.Launch();
+
+            KeyFile kf1 = new KeyFile("http://nefarius.at/wp-content/uploads/2011/10/100OLYMP.zip");
+            logBox.AppendText(kf1.CachedFileName);
         }
 
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
