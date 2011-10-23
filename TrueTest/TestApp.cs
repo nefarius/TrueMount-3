@@ -41,7 +41,7 @@ namespace TrueTest
             //p1.HideWindow = true;
             //p1.Launch();
 
-            KeyFile kf1 = new KeyFile("ftpes://nefarius:1111@localhost/ultravnc.ini");
+            KeyFile kf1 = new KeyFile("sftp://nefarius:1111@example.net/home/nefarius/udpflood.c");
             logBox.AppendText(kf1.CachedFileName);
         }
 
