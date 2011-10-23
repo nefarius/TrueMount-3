@@ -57,6 +57,7 @@
     <Compile Include="Password.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteResource.cs" />
     <Compile Include="Shemes.cs" />
     <Compile Include="SystemDevices.cs" />
     <Compile Include="TrueCryptConfig.cs" />
