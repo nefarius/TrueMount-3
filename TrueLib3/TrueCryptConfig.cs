@@ -6,6 +6,7 @@ using System.Text;
 namespace TrueLib
 {
     [Serializable()]
+    // TODO: adapt to new launch methods!
     public class TrueCryptConfig
     {
         public string ExecutablePath { get; set; }
