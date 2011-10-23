@@ -142,6 +142,7 @@ namespace TrueLib
                 sheme, user, pass, host, path));
         }
 
+        // TODO: add prompt handler!
         private static bool ValidateServerCertficate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true;
