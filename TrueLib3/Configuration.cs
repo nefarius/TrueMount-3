@@ -36,7 +36,7 @@ namespace TrueLib
 
         private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private const string PRODUCT_NAME = "TrueMount 3";
-        private const string CONFIG_FILEN = "config.xml";
+        private const string CONFIG_FILEN = "config.bin";
         #endregion
 
         public Configuration()
