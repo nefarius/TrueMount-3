@@ -9,7 +9,6 @@ using System.Resources;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Runtime.Serialization;
-using System.Xml.Serialization;
 using System.Threading;
 
 namespace TrueLib
@@ -198,8 +197,8 @@ namespace TrueLib
                 {
                     using (FileStream fsFetch = new FileStream(ConfigurationFile, FileMode.Open))
                     {
-                        XmlSerializer xml = new XmlSerializer(typeof(Configuration));
-                        stored = (Configuration)xml.Deserialize(fsFetch);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        stored = (Configuration)bf.Deserialize(fsFetch);
                     }
                 }
 
@@ -210,43 +209,10 @@ namespace TrueLib
             {
                 using (FileStream fsSave = new FileStream(ConfigurationFile, FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(Configuration));
-                    xml.Serialize(fsSave, value);
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fsSave, value);
                 }
             }
-        }
-
-        /// <summary>
-        /// Saves the given configuration to file.
-        /// </summary>
-        /// <param name="current">The current active configuration object.</param>
-        public static void SaveConfiguration(Configuration current)
-        {
-            using(FileStream fsSave = new FileStream(ConfigurationFile, FileMode.Create))
-            {
-                XmlSerializer xml = new XmlSerializer(typeof(Configuration));
-                xml.Serialize(fsSave, current);
-            }
-        }
-
-        /// <summary>
-        /// Opens the configuration from file.
-        /// </summary>
-        /// <returns>Returns stored or new empty default configuration reference.</returns>
-        public static Configuration LoadConfiguration()
-        {
-            Configuration stored = new Configuration();
-
-            if (File.Exists(ConfigurationFile))
-            {
-                using (FileStream fsFetch = new FileStream(ConfigurationFile, FileMode.Open))
-                {
-                    XmlSerializer xml = new XmlSerializer(typeof(Configuration));
-                    stored = (Configuration)xml.Deserialize(fsFetch);
-                }
-            }
-
-            return stored;
         }
     }
 }

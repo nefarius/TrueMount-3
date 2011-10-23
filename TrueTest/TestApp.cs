@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Dolinay;
 using System.IO;
 using TrueLib;
+using System.Globalization;
 
 namespace TrueTest
 {
@@ -31,6 +32,7 @@ namespace TrueTest
             if (cfg.FirstStart)
                 cfg.FirstStart = !cfg.FirstStart;
 
+            cfg.Language = new CultureInfo("en-US");
             Configuration.Local = cfg;
         }
 
