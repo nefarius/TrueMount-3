@@ -39,8 +39,13 @@ namespace TrueLib
             get
             {
                 string lPath = Path.Combine(Configuration.TempPath, Path.GetFileName(this.LocalPath));
-                string user = this.UserInfo.Split(':')[0];
-                string pass = this.UserInfo.Split(':')[1];
+                string user = string.Empty;
+                string pass = string.Empty;
+                if (!string.IsNullOrEmpty(this.UserInfo))
+                {
+                    user = this.UserInfo.Split(':')[0];
+                    pass = this.UserInfo.Split(':')[1];
+                }
 
                 switch ((Schemes)Enum.Parse(typeof(Schemes), this.Scheme, true))
                 {
