@@ -35,11 +35,8 @@ namespace TrueTest
             cfg.Language = new CultureInfo("en-US");
             Configuration.Local = cfg;
 
-            TrueLib.Program p1 = new TrueLib.Program("notepad.exe");
-            //p1.Delay = new TimeSpan(0, 0, 5);
-            p1.Background = true;
-            //p1.HideWindow = true;
-            //p1.Launch();
+            Password pw1 = new Password("static://localhost/mypw()lul6&");
+            Console.WriteLine(pw1.CachedFileName);
         }
 
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
