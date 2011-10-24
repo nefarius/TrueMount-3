@@ -1,10 +1,4 @@
-﻿using System.Text;
-using System;
-using System.Net;
-using System.IO;
-using System.Net.Security;
-using System.Diagnostics;
-using System.Threading;
+﻿using System;
 
 namespace TrueLib
 {

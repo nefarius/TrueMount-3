@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
-using AlexPilotti.FTPS.Client;
-using AlexPilotti.FTPS.Common;
-using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
-using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+using AlexPilotti.FTPS.Client;
 
 namespace TrueLib
 {
