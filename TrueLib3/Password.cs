@@ -3,7 +3,7 @@
 namespace TrueLib
 {
     [Serializable()]
-    public class Password : Uri
+    public class Password : RemoteResource
     {
         public Password(string uri) : base(uri) { }
     }

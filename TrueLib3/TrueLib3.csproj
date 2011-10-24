@@ -58,7 +58,6 @@
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
     <Compile Include="KeyFile.cs" />
-    <Compile Include="MountManager.cs" />
     <Compile Include="MountOptions.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="Program.cs" />
