@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TrueLib.Exceptions;
 
 namespace TrueLib
 {
@@ -146,7 +147,7 @@ namespace TrueLib
         /// <param name="encMedia">The encrypted media to mount.</param>
         /// <param name="encVolume">The device path or file name to mount.</param>
         /// <returns>Returns true on successful mount, else false.</returns>
-        private bool MountEncryptedMedia(EncryptedMedia encMedia, String encVolume)
+        private void MountEncryptedMedia(EncryptedMedia encMedia, String encVolume)
         {
             String password = string.Empty;
             bool mountSuccess = false;
@@ -155,21 +156,13 @@ namespace TrueLib
             // if already mounted skip everything
             if (mountedVolumes.Contains(encMedia))
             {
-                LogAppend("InfoAlreadyMounted", encMedia.ToString());
-                return mountSuccess;
+                throw new AlreadyMountedException(encMedia + " is already mounted.");
             }
 
-            // gather drive letter
-            encMedia.DriveLetterCurrent = encMedia.DynamicDriveLetter;
-
-            // letter we want to assign
-            LogAppend("DriveLetter", encMedia.DriveLetterCurrent);
-
             // local drive letter must not be assigned!
-            if (SystemDevices.GetLogicalDisk(encMedia.DriveLetterCurrent) != null)
+            if (SystemDevices.GetLogicalDisk(encMedia.Letter.Letter) != null)
             {
-                LogAppend("ErrLetterInUse", encMedia.DriveLetterCurrent);
-                return mountSuccess;
+                throw new DriveLetterInUseException();
             }
 
             // read password or let it empty
