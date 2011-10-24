@@ -26,19 +26,23 @@ namespace TrueLib
         {
             get
             {
-                if (this.Type.Equals(DriveLetterType.Fixed))
-                    return _Letter;
-                else
-                    return string.Empty;
+                switch (this.Type)
+                {
+                    case DriveLetterType.Fixed:
+                        return _Letter;
+                    case DriveLetterType.NextFree:
+                        return FreeDriveLetters.First();
+                    case DriveLetterType.RandomFree:
+                        return RandomFreeDriveLetter;
+                    default:
+                        return string.Empty;
+                }
             }
 
             set
             {
-                if (!this.Type.Equals(DriveLetterType.Fixed))
-                    throw new InvalidOperationException(
-                        "You have to set the type to 'Fixed' if you want a static letter.");
-                else
-                    _Letter = value;
+                this.Type = DriveLetterType.Fixed;
+                _Letter = value;
             }
         }
 
