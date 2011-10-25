@@ -6,7 +6,7 @@ namespace TrueLib
     [Serializable()]
     public class Password : RemoteResource
     {
-        public string Password
+        public string PlainPassword
         {
             get
             {
