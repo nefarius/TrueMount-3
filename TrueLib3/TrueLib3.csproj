@@ -43,6 +43,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebDAVClient">
+      <HintPath>WebDAVClient\WebDAVClient.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="EncryptedMedia.cs" />
     <Compile Include="Exceptions\AlreadyMountedException.cs" />
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
+    <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
     <Compile Include="KeyFile.cs" />
     <None Include="MountManager.cs">

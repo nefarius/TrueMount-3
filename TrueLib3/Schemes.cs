@@ -14,6 +14,7 @@ namespace TrueLib
         FTPeS,
         SFTP,
         WebDAV,
+        WebDAVS,
         CIFS
     }
 }

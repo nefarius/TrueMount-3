@@ -6,6 +6,8 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using AlexPilotti.FTPS.Client;
 using TrueLib.Exceptions;
+using net.kvdb.webdav;
+using System.Threading;
 
 namespace TrueLib
 {
@@ -113,11 +115,30 @@ namespace TrueLib
                         }
 
                         return lPath;
+                    case Schemes.WebDAV:
+                    case Schemes.WebDAVS:
+                        AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+                        DownloadCompleteDel dav_ListComplete = delegate
+                        {
+                            autoResetEvent.Set();
+                        };
+                        WebDAVClient dav = new WebDAVClient();
+                        dav.DownloadComplete += new DownloadCompleteDel(dav_ListComplete);
+                        dav.Server = string.Format((this.Scheme.Equals(Schemes.WebDAV.ToString(),
+                            StringComparison.CurrentCultureIgnoreCase)) ? "http://{0}" : "https://{0}", 
+                            this.Host);
+                        dav.Port = (this.Port == -1) ? 80 : this.Port;
+                        dav.User = user;
+                        dav.Pass = pass;
+                        dav.BasePath = Path.GetDirectoryName(this.LocalPath).Replace('\\', '/');
+                        dav.Download(Path.GetFileName(this.LocalPath), lPath);
+                        autoResetEvent.WaitOne();
+                        return lPath;
                     default:
                         break;
                 }
 
-                throw new ArgumentException("Unsupported scheme provided!");
+                throw new ArgumentException("Unsupported scheme provided.");
             }
         }
 

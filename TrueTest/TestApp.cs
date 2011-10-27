@@ -35,8 +35,8 @@ namespace TrueTest
             cfg.Language = new CultureInfo("en-US");
             Configuration.Local = cfg;
 
-            Password pw1 = new Password("static://localhost/mypw()lul6&");
-            Console.WriteLine(pw1.CachedFileName);
+            KeyFile kf1 = new KeyFile("webdav://localhost/webdav/webdav.txt");
+            logBox.AppendText(kf1.CachedFileName);
         }
 
         void dd_DeviceArrived(object sender, DriveDetectorEventArgs e)
