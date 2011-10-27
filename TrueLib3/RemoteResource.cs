@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using AlexPilotti.FTPS.Client;
+using TrueLib.Exceptions;
 
 namespace TrueLib
 {
@@ -102,10 +103,15 @@ namespace TrueLib
 
                         // close input stream
                         winscp.StandardInput.Close();
-                        string output = winscp.StandardOutput.ReadToEnd();
 
                         // Wait for process to completely shut down
                         winscp.WaitForExit();
+
+                        if (!File.Exists(lPath))
+                        {
+                            throw new WinSCPException(winscp.StandardOutput.ReadToEnd());
+                        }
+
                         return lPath;
                     default:
                         break;
