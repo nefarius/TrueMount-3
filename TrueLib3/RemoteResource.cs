@@ -75,8 +75,13 @@ namespace TrueLib
                         }
                         return lPath;
                     case Schemes.SFTP:
+                        if (string.IsNullOrEmpty(this.HostFingerprint))
+                        {
+                            throw new WinSCPException("Host fingerprint not set.");
+                        }
+
                         Process winscp = new Process();
-                        winscp.StartInfo.FileName = "winscp.com";
+                        winscp.StartInfo.FileName = "WinSCP/winscp.com";
                         winscp.StartInfo.UseShellExecute = false;
                         winscp.StartInfo.CreateNoWindow = true;
                         winscp.StartInfo.RedirectStandardInput = true;
