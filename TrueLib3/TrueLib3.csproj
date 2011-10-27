@@ -77,10 +77,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassOverview.cd" />
-    <None Include="WinSCP\WinSCP.com" />
+    <None Include="WinSCP\WinSCP.com">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WinSCP\WinSCP.exe" />
+    <Content Include="WinSCP\WinSCP.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
