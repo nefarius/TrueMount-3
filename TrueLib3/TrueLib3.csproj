@@ -58,6 +58,7 @@
     <Compile Include="EncryptedPartition.cs" />
     <Compile Include="EncryptedMedia.cs" />
     <Compile Include="Exceptions\AlreadyMountedException.cs" />
+    <Compile Include="Exceptions\CIFSException.cs" />
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
@@ -67,6 +68,7 @@
     </None>
     <Compile Include="MountOptions.cs" />
     <Compile Include="Password.cs" />
+    <Compile Include="PinvokeWindowsNetworking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteResource.cs" />

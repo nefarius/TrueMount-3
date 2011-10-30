@@ -8,6 +8,7 @@ using AlexPilotti.FTPS.Client;
 using TrueLib.Exceptions;
 using net.kvdb.webdav;
 using System.Threading;
+using ExtremeMirror;
 
 namespace TrueLib
 {
@@ -138,6 +139,28 @@ namespace TrueLib
                         dav.BasePath = Path.GetDirectoryName(this.LocalPath).Replace('\\', '/');
                         dav.Download(Path.GetFileName(this.LocalPath), lPath);
                         autoResetEvent.WaitOne();
+                        return lPath;
+                    case Schemes.CIFS:
+                        string uncPath = string.Format(@"\\{0}{1}", this.Host, this.LocalPath.Replace('/', '\\'));
+                        string retVal = null;
+                        if(!string.IsNullOrEmpty(this.UserInfo))
+                        {
+                            retVal = PinvokeWindowsNetworking.connectToRemote(uncPath, user, pass);
+                            if (retVal != null)
+                            {
+                                throw new CIFSException(retVal);
+                            }
+                        }
+                        else
+                        {
+                            retVal = PinvokeWindowsNetworking.connectToRemote(uncPath, null, null, true);
+                            if (retVal != null)
+                            {
+                                throw new CIFSException(retVal);
+                            }
+                        }
+                        File.Copy(Path.Combine(uncPath, Path.GetFileName(this.LocalPath)), lPath, true);
+                        PinvokeWindowsNetworking.disconnectRemote(uncPath);
                         return lPath;
                     default:
                         break;
