@@ -165,39 +165,6 @@ namespace TrueLib
                 throw new DriveLetterInUseException();
             }
 
-            // read password or let it empty
-            if (!string.IsNullOrEmpty(encMedia.PasswordFile))
-            {
-                // if we have a password file it must exist
-                if (File.Exists(encMedia.PasswordFile))
-                {
-                    LogAppend("PasswordFile", encMedia.PasswordFile);
-                    // file must be utf-8 encoded
-                    StreamReader pwFileStream = new StreamReader(encMedia.PasswordFile, System.Text.Encoding.UTF8);
-                    password = pwFileStream.ReadLine();
-                    pwFileStream.Close();
-#if DEBUG
-                    LogAppend(null, "Password: {0}", password);
-#endif
-                    LogAppend("PasswordReadOk");
-                }
-                else
-                {
-                    LogAppend("ErrPwFileNoExist", encMedia.PasswordFile);
-                    // return if we run out of options
-                    if (!encMedia.FetchUserPassword)
-                        return mountSuccess;
-                    else bShowPasswdDlg = true;
-                }
-            }
-            else
-            {
-                LogAppend("PasswordEmptyOk");
-                // it will work without a password, but if the user wants to talk to me...
-                if (encMedia.FetchUserPassword)
-                    bShowPasswdDlg = true;
-            }
-
             // prompt password dialog to fetch password from user
             if (bShowPasswdDlg)
             {
@@ -381,4 +348,5 @@ namespace TrueLib
             return mountSuccess;
         }
     }
+
 }
