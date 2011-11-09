@@ -16,10 +16,10 @@ namespace TrueLib.Remote
         public uint Port { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string FilePath { get; set; }
+        public string RemotePath { get; set; }
         public string LocalPath
         {
-            get { return Path.Combine(Configuration.TempPath, Path.GetFileName(FilePath)); }
+            get { return Path.Combine(Configuration.TempPath, Path.GetFileName(RemotePath)); }
         }
     }
 }

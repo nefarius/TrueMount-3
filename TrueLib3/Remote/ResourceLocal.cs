@@ -9,7 +9,7 @@ namespace TrueLib.Remote
     {
         public override string CachedFileName
         {
-            get { return FilePath; }
+            get { return RemotePath; }
         }
     }
 }

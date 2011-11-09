@@ -5,7 +5,12 @@ using System.Text;
 
 namespace TrueLib.Remote
 {
-    class ResourceFTP
+    public class ResourceFTP : ResourceHTTP
     {
+        public ResourceFTP()
+        {
+            Protocol = "ftp";
+            Port = 21;
+        }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Remote\RemoteResource.cs" />
     <Compile Include="Remote\ResourceCIFS.cs" />
     <Compile Include="Remote\ResourceFTP.cs" />
+    <Compile Include="Remote\ResourceFTPeS.cs" />
     <Compile Include="Remote\ResourceHTTP.cs" />
     <Compile Include="Remote\ResourceHTTPS.cs" />
     <Compile Include="Remote\ResourceLocal.cs" />

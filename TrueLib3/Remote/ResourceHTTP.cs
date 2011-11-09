@@ -20,12 +20,12 @@ namespace TrueLib.Remote
                     {
                         url = new Uri(string.Format("{0}://{1}:{2}@{3}{4}/{5}",
                             Protocol.ToString().ToLower(), Username, Password,
-                            Hostname, Port, FilePath));
+                            Hostname, Port, RemotePath));
                     }
                     else
                     {
                         url = new Uri(string.Format("{0}://{1}:{2}/{3}",
-                            Protocol.ToString().ToLower(), Hostname, Port, FilePath));
+                            Protocol.ToString().ToLower(), Hostname, Port, RemotePath));
                     }
 
                     web.DownloadFile(url, LocalPath);
