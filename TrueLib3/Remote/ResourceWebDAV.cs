@@ -25,8 +25,8 @@ namespace TrueLib.Remote
                 dav.Port = new Nullable<int>((int)Port);
                 dav.User = Username;
                 dav.Pass = Password;
-                dav.BasePath = Path.GetDirectoryName(this.LocalPath).Replace('\\', '/');
-                dav.Download(Path.GetFileName(this.LocalPath), LocalPath);
+                dav.BasePath = Path.GetDirectoryName(RemotePath).Replace('\\', '/');
+                dav.Download(Path.GetFileName(RemotePath), LocalPath);
                 autoResetEvent.WaitOne();
                 return LocalPath;
             }

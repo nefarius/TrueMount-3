@@ -14,7 +14,7 @@ namespace TrueLib.Remote
         {
             get
             {
-                string uncPath = string.Format(@"\\{0}{1}", Hostname, this.LocalPath.Replace('/', '\\'));
+                string uncPath = string.Format(@"\\{0}{1}", Hostname, RemotePath.Replace('/', '\\'));
                 string retVal = null;
                 if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
                 {
@@ -32,7 +32,7 @@ namespace TrueLib.Remote
                         throw new CIFSException(retVal);
                     }
                 }
-                File.Copy(Path.Combine(uncPath, Path.GetFileName(this.LocalPath)), LocalPath, true);
+                File.Copy(Path.Combine(uncPath, Path.GetFileName(RemotePath)), LocalPath, true);
                 PinvokeWindowsNetworking.disconnectRemote(uncPath);
                 return LocalPath;
             }
