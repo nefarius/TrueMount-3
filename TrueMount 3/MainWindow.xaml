@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="69,59,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" TextChanged="textBox1_TextChanged" Text ="{Binding Path=Hostname}" />
     </Grid>
 </Window>

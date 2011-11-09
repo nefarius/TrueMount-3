@@ -9,6 +9,7 @@ using TrueLib.Exceptions;
 using net.kvdb.webdav;
 using System.Threading;
 using ExtremeMirror;
+using TrueLib.Remote;
 
 namespace TrueLib
 {

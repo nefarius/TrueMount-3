@@ -9,6 +9,12 @@ namespace TrueLib
     class MountManager
     {
         private List<EncryptedMedia> mountedVolumes = new List<EncryptedMedia>();
+        private Configuration config = null;
+
+        public MountManager(Configuration config)
+        {
+            this.config = config;
+        }
 
         #region Mount and Unmount methods
         /*
@@ -149,10 +155,6 @@ namespace TrueLib
         /// <returns>Returns true on successful mount, else false.</returns>
         private void MountEncryptedMedia(EncryptedMedia encMedia, String encVolume)
         {
-            String password = string.Empty;
-            bool mountSuccess = false;
-            bool bShowPasswdDlg = false;
-
             // if already mounted skip everything
             if (mountedVolumes.Contains(encMedia))
             {
@@ -165,42 +167,15 @@ namespace TrueLib
                 throw new DriveLetterInUseException();
             }
 
-            // prompt password dialog to fetch password from user
-            if (bShowPasswdDlg)
-            {
-                LogAppend("InfoPasswordDialog");
-
-                if (pwDlg == null)
-                    pwDlg = new PasswordDialog(encMedia.ToString());
-                else
-                    pwDlg.VolumeLabel = encMedia.ToString();
-
-                // launch a new password dialog and annoy the user
-                if (pwDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    LogAppend("PasswordFetchOk");
-                    password = pwDlg.Password;
-#if DEBUG
-                    LogAppend(null, "Password: {0}", password);
-#endif
-                }
-                else
-                {
-                    LogAppend("PasswordDialogCanceled");
-                    return mountSuccess;
-                }
-            }
-
-            // warn if important CLI flags are missing (probably the users fault)
-            if (string.IsNullOrEmpty(config.TrueCrypt.CommandLineArguments))
-                LogAppend("WarnTCArgs");
-
-            // log what we read
-            LogAppend("TCArgumentLine", config.TrueCrypt.CommandLineArguments);
-
             // fill in the attributes we got above
-            String tcArgsReady = config.TrueCrypt.CommandLineArguments +
-                "/l" + encMedia.DriveLetterCurrent +
+            String tcArgsReady = string.Format("{0} /l{1} /v \"{2}\" /p \"{3}\"",
+                config.TrueCrypt.CommandLineArguments,
+                encMedia.Letter.Letter,
+                encVolume,
+                encMedia)
+                
+                config.TrueCrypt.CommandLineArguments +
+                "/l" + encMedia. +
                 " /v \"" + encVolume + "\"" +
                 " /p \"" + password + "\"";
             // unset password (it's now in the argument line)
@@ -347,6 +322,7 @@ namespace TrueLib
 
             return mountSuccess;
         }
-    }
 
+        #endregion
+    }
 }

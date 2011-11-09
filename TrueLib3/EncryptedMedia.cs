@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TrueLib.Remote;
 
 namespace TrueLib
 {
@@ -14,8 +15,8 @@ namespace TrueLib
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
         public bool ForceUnmount { get; set; }
-        public List<Password> Passwords { get; set; }
-        public List<KeyFile> KeyFiles { get; set; }
+        public List<RemoteResource> Passwords { get; set; }
+        public List<RemoteResource> KeyFiles { get; set; }
         public DriveLetter Letter { get; set; }
         // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
@@ -25,8 +26,8 @@ namespace TrueLib
 
         public EncryptedMedia()
         {
-            this.Passwords = new List<Password>();
-            this.KeyFiles = new List<KeyFile>();
+            this.Passwords = new List<RemoteResource>();
+            this.KeyFiles = new List<RemoteResource>();
             this.TriggerDevices = new List<TriggerDevice>();
             this.PreMountPrograms = new List<Program>();
             this.PostMountPrograms = new List<Program>();
@@ -42,7 +43,7 @@ namespace TrueLib
                 StringBuilder sb = new StringBuilder();
                 if (this.KeyFiles.Count() > 0)
                 {
-                    foreach (KeyFile item in this.KeyFiles)
+                    foreach (var item in this.KeyFiles)
                     {
                         sb.AppendFormat("/k \"{0}\" ", item.CachedFileName);
                     }

@@ -62,17 +62,22 @@
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
-    <Compile Include="KeyFile.cs" />
     <None Include="MountManager.cs">
       <SubType>Code</SubType>
     </None>
     <Compile Include="MountOptions.cs" />
-    <Compile Include="Password.cs" />
+    <None Include="Password.cs" />
     <Compile Include="PinvokeWindowsNetworking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoteResource.cs" />
-    <Compile Include="Schemes.cs" />
+    <Compile Include="Remote\RemoteResource.cs" />
+    <Compile Include="Remote\ResourceCIFS.cs" />
+    <Compile Include="Remote\ResourceFTP.cs" />
+    <Compile Include="Remote\ResourceHTTP.cs" />
+    <Compile Include="Remote\ResourceHTTPS.cs" />
+    <Compile Include="Remote\ResourceLocal.cs" />
+    <Compile Include="Remote\ResourceSFTP.cs" />
+    <Compile Include="Remote\ResourceWebDAV.cs" />
     <Compile Include="SystemDevices.cs" />
     <Compile Include="TrueCryptConfig.cs" />
     <Compile Include="TriggerDevice.cs" />
@@ -88,6 +93,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

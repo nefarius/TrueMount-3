@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrueLib.Remote;
 
 namespace TrueMount_3
 {
@@ -22,6 +23,11 @@ namespace TrueMount_3
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }
