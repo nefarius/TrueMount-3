@@ -172,7 +172,7 @@ namespace TrueLib
                 config.TrueCrypt.CommandLineArguments,
                 encMedia.Letter.Letter,
                 encVolume,
-                encMedia)
+                encMedia);
                 
                 config.TrueCrypt.CommandLineArguments +
                 "/l" + encMedia. +

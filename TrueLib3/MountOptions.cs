@@ -16,22 +16,19 @@ namespace TrueLib
         /// <summary>
         /// Returns a ready-to-use argument line string.
         /// </summary>
-        public string MountOptionsArgumentLine
+        public override string ToString()
         {
-            get
-            {
-                StringBuilder mOpts = new StringBuilder();
-                if (Readonly)
-                    mOpts.Append("/m ro ");
-                if (Removable)
-                    mOpts.Append("/m rm ");
-                if (Timestamp)
-                    mOpts.Append("/m ts ");
-                if (System)
-                    mOpts.Append("/m sm ");
+            StringBuilder mOpts = new StringBuilder();
+            if (Readonly)
+                mOpts.Append("/m ro ");
+            if (Removable)
+                mOpts.Append("/m rm ");
+            if (Timestamp)
+                mOpts.Append("/m ts ");
+            if (System)
+                mOpts.Append("/m sm ");
 
-                return mOpts.ToString().Trim();
-            }
+            return mOpts.ToString().Trim();
         }
     }
 }
