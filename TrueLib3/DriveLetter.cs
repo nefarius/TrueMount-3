@@ -19,6 +19,7 @@ namespace TrueLib
     public class DriveLetter
     {
         public DriveLetterType Type { get; set; }
+        public string Current { get; set; }
 
         private string _Letter = string.Empty;
         public string Letter
@@ -28,13 +29,13 @@ namespace TrueLib
                 switch (this.Type)
                 {
                     case DriveLetterType.Fixed:
-                        return _Letter;
+                        return Current = _Letter;
                     case DriveLetterType.NextFree:
-                        return FreeDriveLetters.First();
+                        return Current = FreeDriveLetters.First();
                     case DriveLetterType.RandomFree:
-                        return RandomFreeDriveLetter;
+                        return Current = RandomFreeDriveLetter;
                     default:
-                        return string.Empty;
+                        return Current = string.Empty;
                 }
             }
 

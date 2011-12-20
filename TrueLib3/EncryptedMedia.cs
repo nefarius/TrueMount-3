@@ -23,6 +23,7 @@ namespace TrueLib
         public List<TriggerDevice> TriggerDevices { get; set; }
         public List<Program> PreMountPrograms { get; set; }
         public List<Program> PostMountPrograms { get; set; }
+        public MountOptions MountOptions { get; set; }
 
         public EncryptedMedia()
         {

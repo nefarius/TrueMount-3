@@ -155,172 +155,80 @@ namespace TrueLib
         /// <returns>Returns true on successful mount, else false.</returns>
         private void MountEncryptedMedia(EncryptedMedia encMedia, String encVolume)
         {
-            // if already mounted skip everything
+            StringBuilder tcArgs = new StringBuilder();
+            Process tcLauncher = new Process();
+            tcLauncher.StartInfo.FileName = Configuration.LauncherLocation;
+            tcLauncher.StartInfo.UseShellExecute = false;
+
+            /************************************************************************/
+            /* 1. If already mounted, skip everything.                              */
+            /************************************************************************/
             if (mountedVolumes.Contains(encMedia))
             {
                 throw new AlreadyMountedException(encMedia + " is already mounted.");
             }
 
-            // local drive letter must not be assigned!
+            /************************************************************************/
+            /* 2. We need an unassigned drive letter.                               */
+            /************************************************************************/
             if (SystemDevices.GetLogicalDisk(encMedia.Letter.Letter) != null)
             {
                 throw new DriveLetterInUseException();
             }
 
-            // fill in the attributes we got above
-            String tcArgsReady = string.Format("{0} /l{1} /v \"{2}\" /p \"{3}\"",
+            /************************************************************************/
+            /* 3. Add mount option flags for this device.                           */
+            /************************************************************************/
+            tcArgs.Append(encMedia.MountOptions);
+
+            /************************************************************************/
+            /* 4. Fetch key files.                                                  */
+            /************************************************************************/
+            tcArgs.Append(encMedia.KeyFilesArgumentLine);
+
+            /************************************************************************/
+            /* 5. Launch post mount programs.                                       */
+            /************************************************************************/
+            foreach (var postProg in encMedia.PostMountPrograms)
+            {
+                postProg.Launch();
+            }
+
+            /************************************************************************/
+            /*                                                                      */
+            /************************************************************************/
+            foreach (var passwd in encMedia.Passwords)
+            {
+                String tcArgsReady = string.Format("{0} /l{1} /v \"{2}\" /p \"{3}\"",
                 config.TrueCrypt.CommandLineArguments,
                 encMedia.Letter.Letter,
                 encVolume,
-                encMedia);
-                
-                config.TrueCrypt.CommandLineArguments +
-                "/l" + encMedia. +
-                " /v \"" + encVolume + "\"" +
-                " /p \"" + password + "\"";
-            // unset password (it's now in the argument line)
-            password = null;
-#if DEBUG
-            LogAppend(null, "Full argument line: {0}", tcArgsReady);
-#endif
+                passwd.PlainPassword);
 
-            // add specified mount options to argument line
-            if (!string.IsNullOrEmpty(encMedia.MountOptions))
-            {
-                LogAppend("AddMountOpts", encMedia.MountOptions);
-                tcArgsReady += " " + encMedia.MountOptions;
-#if DEBUG
-                LogAppend(null, "Full argument line: {0}", tcArgsReady);
-#endif
-            }
-            else
-                LogAppend("NoMountOpts");
-
-            // add key files
-            if (!string.IsNullOrEmpty(encMedia.KeyFilesArgumentLine))
-            {
-                LogAppend("AddKeyFiles", encMedia.KeyFiles.Count.ToString());
-                tcArgsReady += " " + encMedia.KeyFilesArgumentLine;
-#if DEBUG
-                LogAppend(null, "Full argument line: {0}", tcArgsReady);
-#endif
-            }
-            else
-                LogAppend("NoKeyFiles");
-
-            // if not exists, exit
-            if (string.IsNullOrEmpty(config.TrueCrypt.ExecutablePath))
-            {
-                // password is in here, so free it
-                tcArgsReady = null;
-                // damn just a few more steps! -.-
-                LogAppend("ErrTCNotFound");
-                buttonStartWorker.Enabled = false;
-                buttonStopWorker.Enabled = false;
-                LogAppend("CheckCfgTC");
-                return mountSuccess;
-            }
-            else
-                LogAppend("TCPath", config.TrueCrypt.ExecutablePath);
-
-            // create new process
-            Process tcLauncher = new Process();
-            // set exec name
-            tcLauncher.StartInfo.FileName = Configuration.LauncherLocation;
-            // set arguments
-            tcLauncher.StartInfo.Arguments = '"' + config.TrueCrypt.ExecutablePath +
-                "\" " + tcArgsReady;
-            // use CreateProcess()
-            tcLauncher.StartInfo.UseShellExecute = false;
-#if DEBUG
-            LogAppend(null, "StartInfo.Arguments: {0}", tcLauncher.StartInfo.Arguments);
-#endif
-
-            // arr, fire the canon! - well, try it...
-            try
-            {
-                LogAppend("StartProcess");
+                tcLauncher.StartInfo.Arguments = string.Format("\"{0}\" {1}",
+                    config.TrueCrypt.ExecutablePath, tcArgsReady);
                 tcLauncher.Start();
-            }
-            catch (Win32Exception ex)
-            {
-                // dammit, dammit, dammit! something went wrong at the very end...
-                LogAppend("ErrGeneral", ex.Message);
-                buttonStartWorker.Enabled = false;
-                buttonStopWorker.Enabled = false;
-                LogAppend("CheckTCConf");
-                return mountSuccess;
-            }
-            LogAppend("ProcessStarted");
 
-            // Status
-            LogAppend("WaitDevLaunch");
-            Cursor.Current = Cursors.WaitCursor;
-
-            // Wait for incoming message
-            using (NamedPipeServerStream npServer = new NamedPipeServerStream("TrueCryptMessage"))
-            {
-                npServer.WaitForConnection();
-                using (StreamReader sReader = new StreamReader(npServer, Encoding.Unicode))
+                // Wait for incoming message
+                using (NamedPipeServerStream npServer = new NamedPipeServerStream("TrueCryptMessage"))
                 {
-                    String input = sReader.ReadToEnd();
-#if DEBUG
-                    LogAppend(null, "Pipe: {0}", input);
-#endif
-
-                    if (input != "OK")
+                    npServer.WaitForConnection();
+                    using (StreamReader sReader = new StreamReader(npServer, Encoding.Unicode))
                     {
-                        LogAppend("ErrTrueCryptMsg", input);
-                        if (config.TrueCrypt.ShowErrors)
+                        String input = sReader.ReadToEnd();
+
+                        if (input != "OK")
                         {
-#if DEBUG
-                            MessageBox.Show(string.Format(langRes.GetString("MsgTDiskTimeout"), encMedia, input),
-                                                            langRes.GetString("MsgHDiskTimeout"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-#endif
-
-                            notifyIconSysTray.BalloonTipTitle = langRes.GetString("MsgHDiskTimeout");
-                            notifyIconSysTray.BalloonTipIcon = ToolTipIcon.Warning;
-                            notifyIconSysTray.BalloonTipText = string.Format(langRes.GetString("MsgTDiskTimeout"), encMedia, input);
-                            notifyIconSysTray.ShowBalloonTip(config.BalloonTimePeriod);
+                            throw new TrueCryptException(input);
                         }
-
-                        LogAppend("MountCanceled", encMedia.ToString());
-                        Cursor.Current = Cursors.Default;
-                        return mountSuccess;
                     }
-                    else
-                        LogAppend("InfoLauncherOk");
+                }
+
+                if (encMedia.OpenExplorer)
+                {
+                    Process.Start(string.Format(@"explorer.exe {0}:\", encMedia.Letter.Current));
                 }
             }
-
-            Cursor.Current = Cursors.Default;
-
-            LogAppend("LogicalDiskOnline", encMedia.DriveLetterCurrent);
-            // mount was successful
-            mountSuccess = true;
-            // display balloon tip on successful mount
-            MountBalloonTip(encMedia);
-
-            // if set, open device content in windows explorer
-            if (encMedia.OpenExplorer)
-            {
-                LogAppend("OpenExplorer", encMedia.DriveLetterCurrent);
-                try
-                {
-                    Process.Start("explorer.exe", encMedia.DriveLetterCurrent + @":\");
-                }
-                catch (Exception eex)
-                {
-                    // error in windows explorer (what a surprise)
-                    LogAppend("ErrGeneral", eex.Message);
-                    LogAppend("ErrExplorerOpen");
-                }
-            }
-
-            // add the current mounted media to the dismount sys tray list
-            AddMountedMedia(encMedia);
-
-            return mountSuccess;
         }
 
         #endregion
