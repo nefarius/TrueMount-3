@@ -18,16 +18,19 @@ namespace TrueLib.Remote
                 {
                     if(!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
                     {
+                        // Build URI with authentication data
                         url = new Uri(string.Format("{0}://{1}:{2}@{3}{4}/{5}",
                             Protocol.ToString().ToLower(), Username, Password,
                             Hostname, Port, RemotePath));
                     }
                     else
                     {
+                        // Build URI without authentication data
                         url = new Uri(string.Format("{0}://{1}:{2}/{3}",
                             Protocol.ToString().ToLower(), Hostname, Port, RemotePath));
                     }
 
+                    // Fetch the file
                     web.DownloadFile(url, LocalPath);
                 }
                 return LocalPath;

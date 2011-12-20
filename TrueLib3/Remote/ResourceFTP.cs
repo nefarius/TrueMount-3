@@ -9,6 +9,7 @@ namespace TrueLib.Remote
     {
         public ResourceFTP()
         {
+            // Basically the same like HTTP, just different sheme and port
             Protocol = "ftp";
             Port = 21;
         }

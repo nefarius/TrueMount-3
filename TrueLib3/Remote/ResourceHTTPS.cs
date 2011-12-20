@@ -9,6 +9,7 @@ namespace TrueLib.Remote
     {
         public ResourceHTTPS()
         {
+            // Surprise, different sheme and port =)
             Protocol = "https";
             Port = 443;
         }

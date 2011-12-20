@@ -14,19 +14,29 @@ namespace TrueLib.Remote
         {
             get
             {
+                // The default call is async, but we want a sync call
                 AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+                // Delegate to fire the event on completion
                 DownloadCompleteDel dav_ListComplete = delegate
                 {
                     autoResetEvent.Set();
                 };
                 WebDAVClient dav = new WebDAVClient();
+                // Set the event
                 dav.DownloadComplete += new DownloadCompleteDel(dav_ListComplete);
+                // Build server URI
                 dav.Server = string.Format("{0}://{1}", Protocol, Hostname);
+                // Set port (orly?)
                 dav.Port = new Nullable<int>((int)Port);
+                // ...
                 dav.User = Username;
+                // *sigh*
                 dav.Pass = Password;
+                // DIrectory of the remote file...
                 dav.BasePath = Path.GetDirectoryName(RemotePath).Replace('\\', '/');
+                // GET IT!
                 dav.Download(Path.GetFileName(RemotePath), LocalPath);
+                // Finished! =)
                 autoResetEvent.WaitOne();
                 return LocalPath;
             }

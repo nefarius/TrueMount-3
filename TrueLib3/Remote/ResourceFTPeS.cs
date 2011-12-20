@@ -15,14 +15,19 @@ namespace TrueLib.Remote
         {
             get
             {
+                // We want to handle certificate errors by ourself
                 ServicePointManager.ServerCertificateValidationCallback = ValidateServerCertficate;
+                // Create new FTPS client
                 using (FTPSClient ftps = new FTPSClient())
                 {
+                    // Authentication data
                     NetworkCredential login = new NetworkCredential(Username, Password);
+                    // Connect and login
                     ftps.Connect(Hostname, 
                         login,
                         ESSLSupportMode.CredentialsRequired | ESSLSupportMode.DataChannelRequested,
                         new RemoteCertificateValidationCallback(ValidateServerCertficate));
+                    // Fetch the file
                     ftps.GetFile(RemotePath, LocalPath);
                 }
                 return LocalPath;

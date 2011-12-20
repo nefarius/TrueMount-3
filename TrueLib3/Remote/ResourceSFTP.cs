@@ -10,17 +10,22 @@ namespace TrueLib.Remote
 {
     public class ResourceSFTP : RemoteResource
     {
+        /// <summary>
+        /// Gets or sets the fingerprint to identify the server.
+        /// </summary>
         public string HostFingerprint { get; set; }
         public override string CachedFileName
         {
             get
             {
+                // We need the fingerprint to identify the server
                 if (string.IsNullOrEmpty(this.HostFingerprint))
                 {
                     throw new WinSCPException("Host fingerprint not set.");
                 }
 
                 Process winscp = new Process();
+                // The winscp binaries do our job
                 winscp.StartInfo.FileName = "WinSCP/winscp.com";
                 winscp.StartInfo.UseShellExecute = false;
                 winscp.StartInfo.CreateNoWindow = true;
