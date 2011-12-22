@@ -60,13 +60,14 @@
     <Compile Include="Exceptions\AlreadyMountedException.cs" />
     <Compile Include="Exceptions\CIFSException.cs" />
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
+    <Compile Include="Exceptions\TrueCryptException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
-    <None Include="MountManager.cs">
+    <Compile Include="MountManager.cs">
       <SubType>Code</SubType>
-    </None>
+    </Compile>
     <Compile Include="MountOptions.cs" />
-    <None Include="Password.cs" />
+    <Compile Include="Password.cs" />
     <Compile Include="PinvokeWindowsNetworking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TrueLib.Exceptions;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Pipes;
 
 namespace TrueLib
 {
-    class MountManager
+    public class MountManager
     {
         private List<EncryptedMedia> mountedVolumes = new List<EncryptedMedia>();
         private Configuration config = null;
@@ -187,17 +190,17 @@ namespace TrueLib
             tcArgs.Append(encMedia.KeyFilesArgumentLine);
 
             /************************************************************************/
-            /* 5. Launch post mount programs.                                       */
+            /* 5. Launch pre mount programs.                                       */
             /************************************************************************/
-            foreach (var postProg in encMedia.PostMountPrograms)
+            foreach (var preProg in encMedia.PreMountPrograms)
             {
-                postProg.Launch();
+                preProg.Launch();
             }
 
             /************************************************************************/
-            /*                                                                      */
+            /* 6. Try to mount with every configured password.                      */
             /************************************************************************/
-            foreach (var passwd in encMedia.Passwords)
+            foreach (Password passwd in encMedia.Passwords)
             {
                 String tcArgsReady = string.Format("{0} /l{1} /v \"{2}\" /p \"{3}\"",
                 config.TrueCrypt.CommandLineArguments,
@@ -228,6 +231,13 @@ namespace TrueLib
                 {
                     Process.Start(string.Format(@"explorer.exe {0}:\", encMedia.Letter.Current));
                 }
+            }
+
+            /************************************************************************/
+            /* 7. Launch post mount programs.                                       */
+            /************************************************************************/
+            foreach (var postProg in encMedia)
+            {
             }
         }
 
