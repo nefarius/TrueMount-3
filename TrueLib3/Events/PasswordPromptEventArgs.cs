@@ -7,8 +7,6 @@ namespace TrueLib.Events
 {
     public class PasswordPromptEventArgs : EventArgs
     {
-        private string password;
-
         public PasswordPromptEventArgs()
         {
             
