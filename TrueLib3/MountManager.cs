@@ -236,8 +236,9 @@ namespace TrueLib
             /************************************************************************/
             /* 7. Launch post mount programs.                                       */
             /************************************************************************/
-            foreach (var postProg in encMedia)
+            foreach (var postProg in encMedia.PostMountPrograms)
             {
+                postProg.Launch();
             }
         }
 

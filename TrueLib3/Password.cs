@@ -2,6 +2,7 @@
 using System.IO;
 using TrueLib.Remote;
 using TrueLib.Exceptions;
+using TrueLib.Events;
 
 namespace TrueLib
 {
@@ -31,6 +32,19 @@ namespace TrueLib
         }
         public int Index { get; set; }
         public int Count { get; set; }
+        public delegate string PasswordPromptEventHandler(object sender,
+            PasswordPromptEventArgs e);
+        public event PasswordPromptEventHandler OnPasswordPromptHandler;
+
+        protected string OnPasswordPrompt()
+        {
+            string returnValue = string.Empty;
+            if (OnPasswordPromptHandler != null)
+            {
+                returnValue = OnPasswordPromptHandler(this, new PasswordPromptEventArgs());
+            }
+            return returnValue;
+        }
 
         public Password(PasswordType type)
         {
@@ -60,15 +74,12 @@ namespace TrueLib
                             }
                         }
                     case PasswordType.Prompt:
-                        // TODO: implement event!
-                        break;
+                        return OnPasswordPrompt();
                     case PasswordType.Static:
                         return StaticPassword;
                     default:
                         return string.Empty;
                 }
-
-                return string.Empty;
             }
         }
     }

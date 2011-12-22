@@ -57,9 +57,11 @@
     <Compile Include="EncryptedContainerFile.cs" />
     <Compile Include="EncryptedPartition.cs" />
     <Compile Include="EncryptedMedia.cs" />
+    <Compile Include="Events\PasswordPromptEventArgs.cs" />
     <Compile Include="Exceptions\AlreadyMountedException.cs" />
     <Compile Include="Exceptions\CIFSException.cs" />
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
+    <Compile Include="Exceptions\StaticPasswordException.cs" />
     <Compile Include="Exceptions\TrueCryptException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
