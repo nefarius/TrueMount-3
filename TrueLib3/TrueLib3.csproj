@@ -61,8 +61,10 @@
     <Compile Include="Exceptions\AlreadyMountedException.cs" />
     <Compile Include="Exceptions\CIFSException.cs" />
     <Compile Include="Exceptions\DriveLetterInUseException.cs" />
+    <Compile Include="Exceptions\MountException.cs" />
     <Compile Include="Exceptions\StaticPasswordException.cs" />
     <Compile Include="Exceptions\TrueCryptException.cs" />
+    <Compile Include="Exceptions\VolumeInactiveException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
     <Compile Include="MountManager.cs">

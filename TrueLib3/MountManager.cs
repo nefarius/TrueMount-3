@@ -20,19 +20,19 @@ namespace TrueLib
         }
 
         #region Mount and Unmount methods
-        /*
         /// <summary>
         /// Reads configuration and tries to mount every found device.
         /// </summary>
         /// <returns>Returns count of mounted SystemDevices, if none returns zero.</returns>
-        private int MountAllDevices()
+        public int MountAllDevices()
         {
             int mountedPartitions = 0;
 
             // this method can't do very much without partitions
-            if (config.EncryptedDiskPartitions.Count <= 0)
+            if (config.EncryptedDisks.Count <= 0 &&
+                config.EncryptedPartitions.Count <= 0 &&
+                config.EncryptedContainerFiles.Count <= 0)
             {
-                LogAppend("WarnNoDisks");
                 return mountedPartitions;
             }
 
@@ -55,32 +55,24 @@ namespace TrueLib
         /// </summary>
         /// <param name="encDiskPartition">The encrypted partition to mount.</param>
         /// <returns>Returns true on successful mount, else false.</returns>
-        private bool MountPartition(EncryptedDiskPartition encDiskPartition)
+        private void MountPartition(EncryptedPartition encPart)
         {
-            bool mountSuccess = false;
-
-            LogAppend("SearchDiskLocal");
-
             // is the partition marked as active?
-            if (!encDiskPartition.IsActive)
+            if (!encPart.IsActive)
             {
-                // log and skip disk if marked as inactive
-                LogAppend("DiskDriveConfDisabled", encDiskPartition.DiskCaption);
-                return mountSuccess;
+                throw new VolumeInactiveException();
             }
-            else
-                LogAppend("DiskConfEnabled", encDiskPartition.DiskCaption);
 
             // find local disk
             ManagementObject diskPhysical =
-                SystemDevices.GetDiskDriveBySignature(encDiskPartition.DiskCaption,
-                    encDiskPartition.DiskSignature);
+                SystemDevices.GetDiskDriveBySignature(encPart.DiskCaption,
+                    encPart.DiskSignature);
 
             // is the disk online? if not, skip it
             if (diskPhysical == null)
             {
                 // disk is offline, log and skip
-                LogAppend("DiskDriveOffline", encDiskPartition.DiskCaption);
+                LogAppend("DiskDriveOffline", encPart.DiskCaption);
                 return mountSuccess;
             }
             else
@@ -89,20 +81,20 @@ namespace TrueLib
             // get the index of the parent disk
             uint diskIndex = uint.Parse(diskPhysical["Index"].ToString());
             // get the index of this partition ("real" index is zero-based)
-            uint partIndex = encDiskPartition.PartitionIndex - 1;
+            uint partIndex = encPart.PartitionIndex - 1;
 
             // get original device id from local disk
             String deviceId = null;
             try
             {
-                if (encDiskPartition.PartitionIndex > 0)
+                if (encPart.PartitionIndex > 0)
                     deviceId = SystemDevices.GetPartitionByIndex(diskIndex, partIndex)["DeviceID"].ToString();
                 else
                     deviceId = SystemDevices.GetTCCompatibleDiskPath(diskIndex);
             }
             catch (NullReferenceException)
             {
-                LogAppend("ErrVolumeOffline", encDiskPartition.ToString());
+                LogAppend("ErrVolumeOffline", encPart.ToString());
                 return mountSuccess;
             }
 
@@ -113,7 +105,7 @@ namespace TrueLib
             LogAppend("DiskDrivePath", tcDevicePath);
 
             // try to mount and return true on success
-            return MountEncryptedMedia(encDiskPartition, tcDevicePath);
+            return MountEncryptedMedia(encPart, tcDevicePath);
         }
 
         /// <summary>
@@ -148,7 +140,6 @@ namespace TrueLib
             // try to mount the volume and return true on success
             return MountEncryptedMedia(containerFile, containerFile.FileName);
         }
-        */
 
         /// <summary>
         /// Mounts a specific media.
