@@ -156,7 +156,8 @@ namespace TrueLib
         /// <param name="encMedia">The encrypted media to mount.</param>
         /// <param name="encVolume">The device path or file name to mount.</param>
         /// <returns>Returns true on successful mount, else false.</returns>
-        private void MountEncryptedMedia(EncryptedMedia encMedia, String encVolume)
+        public void MountEncryptedMedia(EncryptedMedia encMedia, String encVolume, 
+            Password.PasswordPromptEventHandler onPasswordPrompt = null)
         {
             StringBuilder tcArgs = new StringBuilder();
             Process tcLauncher = new Process();
@@ -202,6 +203,7 @@ namespace TrueLib
             /************************************************************************/
             foreach (Password passwd in encMedia.Passwords)
             {
+                passwd.OnPasswordPromptHandler += onPasswordPrompt;
                 String tcArgsReady = string.Format("{0} /l{1} /v \"{2}\" /p \"{3}\"",
                 config.TrueCrypt.CommandLineArguments,
                 encMedia.Letter.Letter,
@@ -226,11 +228,6 @@ namespace TrueLib
                         }
                     }
                 }
-
-                if (encMedia.OpenExplorer)
-                {
-                    Process.Start(string.Format(@"explorer.exe {0}:\", encMedia.Letter.Current));
-                }
             }
 
             /************************************************************************/
@@ -239,6 +236,14 @@ namespace TrueLib
             foreach (var postProg in encMedia.PostMountPrograms)
             {
                 postProg.Launch();
+            }
+
+            /************************************************************************/
+            /* 8. Open new drive in explorer.                                       */
+            /************************************************************************/
+            if (encMedia.OpenExplorer)
+            {
+                Process.Start(string.Format(@"explorer.exe {0}:\", encMedia.Letter.Current));
             }
         }
 
