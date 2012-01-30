@@ -14,18 +14,13 @@ using System.Windows.Shapes;
 namespace TrueMount_3
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingsWindow : Window
     {
-        public MainWindow()
+        public SettingsWindow()
         {
             InitializeComponent();
-        }
-
-        private void menuExit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

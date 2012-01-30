@@ -6,19 +6,15 @@ namespace TrueLib
     [Serializable()]
     public class TriggerDevice : IPhysicalMedia
     {
-        private Guid _Guid = Guid.Empty;
-        public Guid Guid
-        {
-            get { return _Guid; }
-        }
+        public Guid Guid { get; private set; }
         public bool IsActive { get; set; }
 
         public TriggerDevice()
         {
 #if !DEBUG
-            this._Guid = Guid.NewGuid();
+            this.Guid = Guid.NewGuid();
 #else
-            this._Guid = new Guid("a4a48e95-92d3-4242-839b-ce4dae991346");
+            this.Guid = new Guid("a4a48e95-92d3-4242-839b-ce4dae991346");
 #endif
         }
 

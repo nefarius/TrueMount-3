@@ -67,9 +67,9 @@
     <Compile Include="Exceptions\VolumeInactiveException.cs" />
     <Compile Include="Exceptions\WinSCPException.cs" />
     <Compile Include="IPhysicalMedia.cs" />
-    <Compile Include="MountManager.cs">
+    <None Include="MountManager.cs">
       <SubType>Code</SubType>
-    </Compile>
+    </None>
     <Compile Include="MountOptions.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="PinvokeWindowsNetworking.cs" />
