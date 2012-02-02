@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TrueMount_3.Windows;
 
 namespace TrueMount_3
 {
@@ -26,6 +27,12 @@ namespace TrueMount_3
         private void menuExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void menuSettings_Click(object sender, RoutedEventArgs e)
+        {
+            WelcomeWizard ww = new WelcomeWizard();
+            ww.ShowDialog();
         }
     }
 }

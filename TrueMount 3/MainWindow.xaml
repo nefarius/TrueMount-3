@@ -11,7 +11,7 @@
                     IconSource="/Icons/lock.ico">
         <tb:TaskbarIcon.ContextMenu>
             <ContextMenu>
-                <MenuItem Name="menuSettings" Header="Configuration" >
+                <MenuItem Name="menuSettings" Header="Configuration" Click="menuSettings_Click">
                     <MenuItem.Icon>
                         <Image Width="30" Height="30" Source="/Icons/settings.ico" />
                     </MenuItem.Icon>

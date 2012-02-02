@@ -11,14 +11,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TrueMount_3
+namespace TrueMount_3.Windows
 {
     /// <summary>
-    /// Interaction logic for SettingsWindow.xaml
+    /// Interaction logic for WelcomeWizard.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class WelcomeWizard : Window
     {
-        public SettingsWindow()
+        public WelcomeWizard()
         {
             InitializeComponent();
         }
