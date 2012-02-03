@@ -140,9 +140,6 @@
     <Resource Include="Icons\settings.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Our_Secret___shh_by_Qinni.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Our_Secret___shh_by_Qinni.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
