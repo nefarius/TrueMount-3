@@ -11,6 +11,7 @@
                     <ColumnDefinition Width="387*" />
                 </Grid.ColumnDefinitions>
                 <Image Source="../Images/Our_Secret___shh_by_Qinni.jpg" />
+                <TextBlock Grid.Column="2" Height="106" Margin="26,31,0,0" Name="textBlock1" Text="Welcome and thank you for your trust in me!" VerticalAlignment="Top" HorizontalAlignment="Left" Width="244" />
             </Grid>
         </my:WizardPage>
         <my:WizardPage />

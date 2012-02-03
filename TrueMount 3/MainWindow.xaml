@@ -10,40 +10,69 @@
                     MenuActivation="LeftOrRightClick"
                     IconSource="/Icons/lock.ico">
         <tb:TaskbarIcon.ContextMenu>
-            <ContextMenu>
-                <MenuItem Name="menuSettings" Header="Configuration" Click="menuSettings_Click">
+            <ContextMenu FontWeight="Bold" VerticalAlignment="Center">
+                <MenuItem IsHitTestVisible="False">
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/settings.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/lock.ico" />
+                    </MenuItem.Icon>
+                    <MenuItem.Header>
+                        <Label HorizontalAlignment="Center" Width="Auto" Content="TrueMount 3" FontWeight="Normal" />
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="menuSettings" Click="menuSettings_Click">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" Text="Configuration" />
+                    </MenuItem.Header>
+                    <MenuItem.Icon>
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/settings.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuMount" Header="Mount volume">
+                <MenuItem Name="menuMount">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" Text="Mount volume" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/Button-Turn-On.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/Button-Turn-On.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuUnmount" Header="Unmount volume">
+                <MenuItem Name="menuUnmount">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Bold" Text="Unmount volume" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/Button-Turn-Off.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/Button-Turn-Off.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuMountAll" Header="Mount all">
+                <MenuItem Name="menuMountAll">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Bold" Text="Mount all" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/Button-Play.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/Button-Play.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuUnmountAll" Header="Unmount all">
+                <MenuItem Name="menuUnmountAll">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Bold" Text="Unmount all" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/Button-Stop.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/Button-Stop.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuViewLog" Header="View Log">
+                <MenuItem Name="menuViewLog">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Bold" Text="View Log" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/log.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/log.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="menuExit" Header="Close" Click="menuExit_Click">
+                <MenuItem Name="menuExit" Click="menuExit_Click">
+                    <MenuItem.Header>
+                        <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Bold" Text="Close" />
+                    </MenuItem.Header>
                     <MenuItem.Icon>
-                        <Image Width="30" Height="30" Source="/Icons/exit.ico" />
+                        <Image Width="30" Height="30" Source="/TrueMount%203;component/Icons/exit.ico" />
                     </MenuItem.Icon>
                 </MenuItem>
             </ContextMenu>
