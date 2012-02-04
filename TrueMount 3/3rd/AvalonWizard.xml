@@ -1,0 +1,1131 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AvalonWizard</name>
+    </assembly>
+    <members>
+        <member name="T:AvalonWizard.Aero.WinApi.Rect">
+            <summary>
+            A wrapper for a RECT struct
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Aero.WinApi.Rect.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Rect initialized with supplied values.
+            </summary>
+            <param name="left">Position of left edge</param>
+            <param name="top">Position of top edge</param>
+            <param name="right">Position of right edge</param>
+            <param name="bottom">Position of bottom edge</param>
+        </member>
+        <member name="M:AvalonWizard.Aero.WinApi.Rect.op_Equality(AvalonWizard.Aero.WinApi.Rect,AvalonWizard.Aero.WinApi.Rect)">
+            <summary>
+            Determines if two Rects are equal.
+            </summary>
+            <param name="first">First Rect</param>
+            <param name="second">Second Rect</param>
+            <returns>True if first Rect is equal to second; false otherwise.</returns>
+        </member>
+        <member name="M:AvalonWizard.Aero.WinApi.Rect.op_Inequality(AvalonWizard.Aero.WinApi.Rect,AvalonWizard.Aero.WinApi.Rect)">
+            <summary>
+            Determines if two Rects are not equal
+            </summary>
+            <param name="first">First Rect</param>
+            <param name="second">Second Rect</param>
+            <returns>True if first is not equal to second; false otherwise.</returns>
+        </member>
+        <member name="M:AvalonWizard.Aero.WinApi.Rect.Equals(System.Object)">
+            <summary>
+            Determines if the Rect is equal to another Rect.
+            </summary>
+            <param name="obj">Another Rect to compare</param>
+            <returns>True if this Rect is equal to the one provided; false otherwise.</returns>
+        </member>
+        <member name="M:AvalonWizard.Aero.WinApi.Rect.GetHashCode">
+            <summary>
+            Creates a hash code for the Rect
+            </summary>
+            <returns>Returns hash code for this Rect</returns>
+        </member>
+        <member name="P:AvalonWizard.Aero.WinApi.Rect.Left">
+            <summary>
+            Position of left edge
+            </summary>            
+        </member>
+        <member name="P:AvalonWizard.Aero.WinApi.Rect.Top">
+            <summary>
+            Position of top edge
+            </summary>            
+        </member>
+        <member name="P:AvalonWizard.Aero.WinApi.Rect.Right">
+            <summary>
+            Position of right edge
+            </summary>            
+        </member>
+        <member name="P:AvalonWizard.Aero.WinApi.Rect.Bottom">
+            <summary>
+            Position of bottom edge
+            </summary>            
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.SynchronousWindowPosition">
+            <summary>If the calling thread and the thread that owns the window are attached to different input queues, 
+            the system posts the request to the thread that owns the window. This prevents the calling thread from 
+            blocking its execution while other threads process the request.</summary>
+            <remarks>SWP_ASYNCWINDOWPOS</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DeferErase">
+            <summary>Prevents generation of the WM_SYNCPAINT message.</summary>
+            <remarks>SWP_DEFERERASE</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DrawFrame">
+            <summary>Draws a frame (defined in the window's class description) around the window.</summary>
+            <remarks>SWP_DRAWFRAME</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.FrameChanged">
+            <summary>Applies new frame styles set using the SetWindowLong function. Sends a WM_NCCALCSIZE message to 
+            the window, even if the window's size is not being changed. If this flag is not specified, WM_NCCALCSIZE 
+            is sent only when the window's size is being changed.</summary>
+            <remarks>SWP_FRAMECHANGED</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.HideWindow">
+            <summary>Hides the window.</summary>
+            <remarks>SWP_HIDEWINDOW</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotActivate">
+            <summary>Does not activate the window. If this flag is not set, the window is activated and moved to the 
+            top of either the topmost or non-topmost group (depending on the setting of the hWndInsertAfter 
+            parameter).</summary>
+            <remarks>SWP_NOACTIVATE</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotCopyBits">
+            <summary>Discards the entire contents of the client area. If this flag is not specified, the valid 
+            contents of the client area are saved and copied back into the client area after the window is sized or 
+            repositioned.</summary>
+            <remarks>SWP_NOCOPYBITS</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.IgnoreMove">
+            <summary>Retains the current position (ignores X and Y parameters).</summary>
+            <remarks>SWP_NOMOVE</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotChangeOwnerZOrder">
+            <summary>Does not change the owner window's position in the Z order.</summary>
+            <remarks>SWP_NOOWNERZORDER</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotRedraw">
+            <summary>Does not redraw changes. If this flag is set, no repainting of any kind occurs. This applies to 
+            the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent 
+            window uncovered as a result of the window being moved. When this flag is set, the application must 
+            explicitly invalidate or redraw any parts of the window and parent window that need redrawing.</summary>
+            <remarks>SWP_NOREDRAW</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotReposition">
+            <summary>Same as the SWP_NOOWNERZORDER flag.</summary>
+            <remarks>SWP_NOREPOSITION</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.DoNotSendChangingEvent">
+            <summary>Prevents the window from receiving the WM_WINDOWPOSCHANGING message.</summary>
+            <remarks>SWP_NOSENDCHANGING</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.IgnoreResize">
+            <summary>Retains the current size (ignores the cx and cy parameters).</summary>
+            <remarks>SWP_NOSIZE</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.IgnoreZOrder">
+            <summary>Retains the current Z order (ignores the hWndInsertAfter parameter).</summary>
+            <remarks>SWP_NOZORDER</remarks>
+        </member>
+        <member name="F:AvalonWizard.Aero.WinApi.SetWindowPosFlags.ShowWindow">
+            <summary>Displays the window.</summary>
+            <remarks>SWP_SHOWWINDOW</remarks>
+        </member>
+        <member name="T:AvalonWizard.DefaultNavigationStrategy">
+            <summary>
+            The default implementation of <see cref="T:AvalonWizard.INavigationStrategy"/>.
+            </summary>
+            <remarks>
+            This implementation uses the <see cref="P:AvalonWizard.WizardPage.NextPage"/> property of the <see cref="P:AvalonWizard.Wizard.CurrentPage"/> 
+            as the next page. If the value of the property is <c>null</c> it uses the next page 
+            in the <see cref="P:AvalonWizard.Wizard.Pages"/> collection.
+            </remarks>
+        </member>
+        <member name="T:AvalonWizard.INavigationStrategy">
+            <summary>
+            Wizard's navigation strategy allows to implement the custom way to select the next page.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.INavigationStrategy.GetNextPage(AvalonWizard.Wizard)">
+            <summary>
+            Gets the next page to go.
+            </summary>
+            <param name="wizard">Wizard instance.</param>
+            <returns>The next page.</returns>
+        </member>
+        <member name="M:AvalonWizard.DefaultNavigationStrategy.GetNextPage(AvalonWizard.Wizard)">
+            <summary>
+            Gets the next page.
+            </summary>
+            <param name="wizard">Wizard instance.</param>
+            <returns>The next page.</returns>
+            <remarks>
+            This implementation uses the <see cref="P:AvalonWizard.WizardPage.NextPage"/> property of the <see cref="P:AvalonWizard.Wizard.CurrentPage"/> 
+            as the next page. If the value of the property is <c>null</c> it uses the next page 
+            in the <see cref="P:AvalonWizard.Wizard.Pages"/> collection.
+            </remarks>
+        </member>
+        <member name="T:AvalonWizard.Converters.BooleanInverterConvertor">
+            <summary>
+            Invertes the <see cref="T:System.Boolean"/> values.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Converters.BooleanInverterConvertor.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value produced by the binding source.
+            </param><param name="targetType">The type of the binding target property.
+            </param><param name="parameter">The converter parameter to use.
+            </param><param name="culture">The culture to use in the converter.
+            </param>
+        </member>
+        <member name="M:AvalonWizard.Converters.BooleanInverterConvertor.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value that is produced by the binding target.
+            </param><param name="targetType">The type to convert to.
+            </param><param name="parameter">The converter parameter to use.
+            </param><param name="culture">The culture to use in the converter.
+            </param>
+        </member>
+        <member name="T:AvalonWizard.Aero.AeroWizardHeader">
+            <summary>
+            Represent wizard's header in Aero Wizard style.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Aero.AeroWizardHeader.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Aero.AeroWizardHeader.IsCompositionEnabledProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Aero.AeroWizardHeader.IsCompositionEnabled"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Aero.AeroWizardHeader.IsActiveProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Aero.AeroWizardHeader.IsActive"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Aero.AeroWizardHeader.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Invoked when an unhandled MouseLeftButtonDown routed event is raised on this element.
+            Implement this method to add class handling for this event.
+            </summary>
+            <param name="e">
+            The MouseButtonEventArgs that contains the event data. 
+            The event data reports that the left mouse button was pressed.
+            </param>
+        </member>
+        <member name="P:AvalonWizard.Aero.AeroWizardHeader.IsCompositionEnabled">
+            <summary>
+            Gets the value indicating whether DWM composition is enabled.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Aero.AeroWizardHeader.IsActive">
+            <summary>
+            Gets the value indicating whether the wizard window is active.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.BackButtonText">
+            <summary>
+              Looks up a localized string similar to Back.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.CancelButtonText">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.FinishButtonText">
+            <summary>
+              Looks up a localized string similar to Finish.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Properties.Resources.NextButtonText">
+            <summary>
+              Looks up a localized string similar to Next.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Designer">
+            <summary>
+            Provides attached properties for design-time support of wizard.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Designer.GetPageIndex(System.Windows.DependencyObject)">
+            <summary>
+            Gets the design-time page index.
+            </summary>
+            <param name="obj">The <see cref="T:AvalonWizard.Wizard"/> instance.</param>
+            <returns>Design-time page index.</returns>
+            <seealso cref="M:AvalonWizard.Designer.SetPageIndex(System.Windows.DependencyObject,System.Int32)"/>
+            <seealso cref="F:AvalonWizard.Designer.PageIndexProperty"/>
+        </member>
+        <member name="M:AvalonWizard.Designer.SetPageIndex(System.Windows.DependencyObject,System.Int32)">
+            <summary>
+            Sets the design-time page index.
+            </summary>
+            <param name="obj">The <see cref="T:AvalonWizard.Wizard"/> instance.</param>
+            <param name="value">Design-time page index.</param>
+            <seealso cref="M:AvalonWizard.Designer.GetPageIndex(System.Windows.DependencyObject)"/>
+            <seealso cref="F:AvalonWizard.Designer.PageIndexProperty"/>
+        </member>
+        <member name="F:AvalonWizard.Designer.PageIndexProperty">
+            <summary>
+            Identifies <c>PageIndex</c> attached property.
+            </summary>
+            <seealso cref="M:AvalonWizard.Designer.GetPageIndex(System.Windows.DependencyObject)"/>
+            <seealso cref="M:AvalonWizard.Designer.SetPageIndex(System.Windows.DependencyObject,System.Int32)"/>
+        </member>
+        <member name="T:AvalonWizard.Converters.BooleanToVisibilityConverter">
+            <summary>
+            Converts <see cref="T:System.Boolean"/> to <see cref="T:System.Windows.Visibility"/>.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Converters.BooleanToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use. See remarks for the supported values.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <remarks>
+            <para>
+            The default behavior results in <see cref="F:System.Windows.Visibility.Visible"/> if the passed values is <c>true</c>
+            and to <see cref="F:System.Windows.Visibility.Collapsed"/> otherwise. 
+            This behavior may be changed by <paramref name="parameter"/>.
+            </para>
+            <para>The parameter argument can be one of the following values:</para>
+            <list type="table">
+                <listheader>
+                    <term>Value</term>
+                    <description>Description</description>
+                </listheader>
+                <item>
+                    <term>INVERT</term>
+                    <description>Inverts the value.</description>
+                </item>
+                <item>
+                    <term>HIDE</term>
+                    <description>Convert <c>false</c> to <c>Visibility.Hidden</c> instead of <c>Visibility.Collapsed</c>.</description>
+                </item>
+            </list>
+            <para>You may use both values, separated by comma.</para>
+            </remarks>
+        </member>
+        <member name="M:AvalonWizard.Converters.BooleanToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value that is produced by the binding target.
+            </param><param name="targetType">The type to convert to.
+            </param><param name="parameter">The converter parameter to use.
+            </param><param name="culture">The culture to use in the converter.
+            </param>
+        </member>
+        <member name="T:AvalonWizard.WizardPageConfirmEventArgs">
+            <summary>
+            Provides data for the <see cref="E:AvalonWizard.WizardPage.Commit"/> 
+            and <see cref="E:AvalonWizard.WizardPage.Rollback"/> events.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPageConfirmEventArgs.#ctor(AvalonWizard.WizardPage)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="page">The wizard page that has raised the event.</param>
+        </member>
+        <member name="P:AvalonWizard.WizardPageConfirmEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether this action is to be cancelled or allowed.
+            </summary>
+            <value><c>true</c> if cancel; otherwise, <c>false</c> to allow. Default is <c>false</c>.</value>
+        </member>
+        <member name="P:AvalonWizard.WizardPageConfirmEventArgs.Page">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.WizardPage"/> that has raised the event.
+            </summary>
+            <value>The wizard page.</value>
+        </member>
+        <member name="T:AvalonWizard.WizardPageCollection">
+            <summary>
+            The collection of wizard's pages.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPageCollection.InsertItem(System.Int32,AvalonWizard.WizardPage)">
+            <summary>
+            Inserts an item into the collection at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which item should be inserted.</param>
+            <param name="item">The object to insert.</param>
+        </member>
+        <member name="M:AvalonWizard.WizardPageCollection.RemoveItem(System.Int32)">
+            <summary>
+            Removes the item at the specified index of the collection.
+            </summary>
+            <param name="index">The zero-based index of the element to remove.</param>
+        </member>
+        <member name="M:AvalonWizard.WizardPageCollection.ClearItems">
+            <summary>
+            Removes all items from the collection. 
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPageCollection.SetItem(System.Int32,AvalonWizard.WizardPage)">
+            <summary>
+            Replaces the element at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the element to replace.</param>
+            <param name="item">The new value for the element at the specified index.</param>
+        </member>
+        <member name="T:AvalonWizard.CurrentPageChangedEventArgs">
+            <summary>
+            Provides data for <see cref="E:AvalonWizard.Wizard.CurrentPageChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.CurrentPageChangedEventArgs.#ctor(AvalonWizard.WizardPage,AvalonWizard.WizardPage)">
+            <summary>
+            Creates the new instance.
+            </summary>
+            <param name="oldPage">The old page.</param>
+            <param name="newPage">The new page.</param>
+        </member>
+        <member name="P:AvalonWizard.CurrentPageChangedEventArgs.OldPage">
+            <summary>
+            Gets the old page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.CurrentPageChangedEventArgs.NewPage">
+            <summary>
+            Gets the new page.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Converters.VisibilityMultiConverter">
+            <summary>
+            Converts multiply <see cref="T:System.Windows.Visibility"/> values to a single one.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Converters.VisibilityMultiConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts source values to a value for the binding target. The data binding engine calls this method when it propagates the values from source bindings to the binding target.
+            </summary>
+            <returns>
+            A converted value.
+            If the method returns null, the valid null value is used.
+            A return value of <see cref="T:System.Windows.DependencyProperty"/>.<see cref="F:System.Windows.DependencyProperty.UnsetValue"/> indicates that the converter did not produce a value, and that the binding will use the <see cref="P:System.Windows.Data.BindingBase.FallbackValue"/> if it is available, or else will use the default value.
+            A return value of <see cref="T:System.Windows.Data.Binding"/>.<see cref="F:System.Windows.Data.Binding.DoNothing"/> indicates that the binding does not transfer the value or use the <see cref="P:System.Windows.Data.BindingBase.FallbackValue"/> or the default value.
+            </returns>
+            <param name="values">The array of values that the source bindings in the <see cref="T:System.Windows.Data.MultiBinding"/> produces. The value <see cref="F:System.Windows.DependencyProperty.UnsetValue"/> indicates that the source binding has no value to provide for conversion.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use. See remark for more info.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <remarks>
+            <para>
+            The default behavior results in <see cref="F:System.Windows.Visibility.Visible"/> if ALL passed values are
+            <see cref="F:System.Windows.Visibility.Visible"/> and to <see cref="F:System.Windows.Visibility.Collapsed"/> otherwise. 
+            This behavior may be changed by <paramref name="parameter"/>.
+            </para>
+            <para>The parameter argument can be one of the following values:</para>
+            <list type="table">
+                <listheader>
+                    <term>Value</term>
+                    <description>Description</description>
+                </listheader>
+                <item>
+                    <term>ANY</term>
+                    <description>The result is <see cref="F:System.Windows.Visibility.Visible"/> if ANY of the passed values is <see cref="F:System.Windows.Visibility.Visible"/>.</description>
+                </item>
+                <item>
+                    <term>HIDE</term>
+                    <description>Convert <c>false</c> to <c>Visibility.Hidden</c> instead of <c>Visibility.Collapsed</c>.</description>
+                </item>
+            </list>
+            <para>You may use both values, separated by comma.</para>
+            </remarks>
+        </member>
+        <member name="M:AvalonWizard.Converters.VisibilityMultiConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a binding target value to the source binding values.
+            </summary>
+            <returns>
+            An array of values that have been converted from the target value back to the source values.
+            </returns>
+            <param name="value">The value that the binding target produces.
+            </param><param name="targetTypes">The array of types to convert to. The array length indicates the number and types of values that are suggested for the method to return.
+            </param><param name="parameter">The converter parameter to use.
+            </param><param name="culture">The culture to use in the converter.
+            </param>
+        </member>
+        <member name="T:AvalonWizard.Aero.AeroWizardPageChrome">
+            <summary>
+            Provides borders and background color for <see cref="T:AvalonWizard.WizardPage"/> when Aero Wizard style is set.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.WizardPageInitEventArgs">
+            <summary>
+            Provides data for the <see cref="E:AvalonWizard.WizardPage.Initialize"/> event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPageInitEventArgs.#ctor(AvalonWizard.WizardPage,AvalonWizard.WizardPage)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="page">
+            The <see cref="T:AvalonWizard.WizardPage"/> that has raised the event.
+            </param>
+            <param name="previousPage">
+            The <see cref="T:AvalonWizard.WizardPage"/> that was previously selected when the event was raised.
+            </param>
+        </member>
+        <member name="P:AvalonWizard.WizardPageInitEventArgs.Page">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.WizardPage"/> that has raised the event.
+            </summary>
+            <value>The wizard page.</value>
+        </member>
+        <member name="P:AvalonWizard.WizardPageInitEventArgs.PreviousPage">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.WizardPage"/> that was previously selected when the event was raised.
+            </summary>
+            <value>The previous wizard page.</value>
+        </member>
+        <member name="T:AvalonWizard.Extensions.ObjectExtensions">
+            <summary>
+            Extensions for all objects.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Extensions.ObjectExtensions.In``1(``0,``0[])">
+            <summary>
+            Checks whether the object is equal to one of the specified values.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.WizardCommands">
+            <summary>
+            Contains commands for the <see cref="T:AvalonWizard.Wizard"/> control.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardCommands.NextPage">
+            <summary>
+            Makes the wizard go to the next page.
+            </summary>
+            <remarks>
+            <para>
+            Is the command parameter is <c>null</c>, the wizard navigates to next page in <see cref="P:AvalonWizard.Wizard.Pages"/> collection
+            or finishes the wizard if the current page is the last one.
+            </para>
+            <para>
+            The command parameter may be one of the following types:
+            </para>
+            <list type="table">
+                <listheader>
+                    <term>Type</term>
+                    <description>Usage</description>
+                </listheader>
+                <item>
+                    <term><see cref="T:AvalonWizard.WizardPage"/></term>
+                    <description>Navigates to the specified page.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.String"/></term>
+                    <description>Navigates to the page with the specified name.</description>
+                </item>
+                <item>
+                    <term>Any type convertible to <see cref="T:System.Int32"/></term>
+                    <description>Navigates to the page with the specified index in the <see cref="P:AvalonWizard.Wizard.Pages"/> collection.</description>
+                </item>
+            </list>
+            <para>
+            If the parameter is of type <see cref="T:System.String"/> then the wizard will search for the page with the corresponding name.
+            If the page is not found, then the wizard will try to convert the string to <see cref="T:System.Int32"/> 
+            and use it as the index in <see cref="P:AvalonWizard.Wizard.Pages"/> collection.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:AvalonWizard.WizardCommands.PreviousPage">
+            <summary>
+            Makes the wizard go to the previous page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardCommands.Finish">
+            <summary>
+            Finishes the wizard..
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardCommands.Cancel">
+            <summary>
+            Cancels the wizard.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Wizard">
+            <summary>
+            Wizard Control for Windows Presentation foundation.
+            </summary>
+            <remarks>
+            The wizard supports two styles: the legacy Wizard 97 and the modern Aero Wizard.
+            </remarks>
+        </member>
+        <member name="M:AvalonWizard.Wizard.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.NextPage">
+            <summary>
+            Steps to the next page or finishes the wizard if the current page is the last one.
+            </summary>
+            <seealso cref="M:AvalonWizard.Wizard.NextPage(AvalonWizard.WizardPage)"/>
+        </member>
+        <member name="M:AvalonWizard.Wizard.NextPage(AvalonWizard.WizardPage)">
+            <summary>
+            Steps to the specified page.
+            </summary>
+            <param name="nextPage">
+            The page to go. 
+            If the value is <c>null</c>, the wizard steps to the next page or finishes the wizard if the current page is the last one.
+            </param>
+            <seealso cref="M:AvalonWizard.Wizard.NextPage"/>
+        </member>
+        <member name="M:AvalonWizard.Wizard.NextPageByName(System.String)">
+            <summary>
+            Steps to the page with the specified name.
+            </summary>
+            <param name="pageName">Page name to navigate to.</param>
+            <exception cref="T:System.ArgumentException">
+            <see cref="P:AvalonWizard.Wizard.Pages"/> collection does not contains the page with the specified name.
+            </exception>
+        </member>
+        <member name="M:AvalonWizard.Wizard.NextPageByIndex(System.Int32)">
+            <summary>
+            Steps to the page with the specified index in <see cref="P:AvalonWizard.Wizard.Pages"/> collection.
+            </summary>
+            <param name="pageIndex">Page index to navigate to.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Page index is out of range.</exception>
+        </member>
+        <member name="M:AvalonWizard.Wizard.PreviousPage">
+            <summary>
+            Steps to previous page.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.Finish">
+            <summary>
+            Finishes the wizard.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.Cancel">
+            <summary>
+            Cancels the wizard.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.BackButtonContentProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.BackButtonContent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.NextButtonContentProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.NextButtonContent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.FinishButtonContentProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.FinishButtonContent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.CancelButtonContentProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.CancelButtonContent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.CurrentPageProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.CurrentPage"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.CurrentPageIndexProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.CurrentPageIndex"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.HasPagesProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.HasPages"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.IsFirstPageProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.IsFirstPage"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.IsLastPageProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.IsLastPage"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.WizardStyleProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.WizardStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.EffectiveWizardStyleProperty">
+            <summary>
+            Identifies <see cref="P:AvalonWizard.Wizard.EffectiveWizardStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.FinishedEvent">
+            <summary>
+            Identifies <see cref="E:AvalonWizard.Wizard.Finished"/> routed event.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.CancelledEvent">
+            <summary>
+            Identifies <see cref="E:AvalonWizard.Wizard.Cancelled"/> routed event.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard.CurrentPageChangedEvent">
+            <summary>
+            Identifies <see cref="E:AvalonWizard.Wizard.CurrentPageChanged"/> routed event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.OnFinished(System.Windows.RoutedEventArgs)">
+            <summary>
+            Invoked when the wizard is successfully finished.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.OnCancelled(System.Windows.RoutedEventArgs)">
+            <summary>
+            Invoked when the wizard is cancelled.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.OnCurrentPageChanged(AvalonWizard.CurrentPageChangedEventArgs)">
+            <summary>
+            Invoked when the current page is changed.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard.System#Windows#Markup#IAddChild#AddChild(System.Object)">
+            <summary>
+            Adds a child object. 
+            </summary>
+            <param name="value">The child object to add.</param>
+            <exception cref="T:System.ArgumentException">The argument is not a <see cref="T:AvalonWizard.WizardPage"/>.</exception>
+        </member>
+        <member name="M:AvalonWizard.Wizard.System#Windows#Markup#IAddChild#AddText(System.String)">
+            <summary>
+            Adds the text content of a node to the object. 
+            </summary>
+            <param name="text">The text to add to the object.</param>
+            <remarks>The method is not implemented and will throw <see cref="T:System.NotImplementedException"/>.</remarks>
+            <exception cref="T:System.NotImplementedException">Always.</exception>
+        </member>
+        <member name="P:AvalonWizard.Wizard.BackButtonContent">
+            <summary>
+            Gets or sets the content of the Back button.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.NextButtonContent">
+            <summary>
+            Gets or sets the content of the Next button.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.FinishButtonContent">
+            <summary>
+            Gets or sets the content of the Finish button.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.CancelButtonContent">
+            <summary>
+            Gets or sets the content of the Cancel button.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.CurrentPage">
+            <summary>
+            Gets the current page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.CurrentPageIndex">
+            <summary>
+            Gets the current page's index.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.HasPages">
+            <summary>
+            Gets the value indicating whether the wizard has any pages.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.IsFirstPage">
+            <summary>
+            Gets the value indicating whether the current page is the first page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.IsLastPage">
+            <summary>
+            Gets the value indicating whether the current page is either last page or
+            has the <see cref="P:AvalonWizard.WizardPage.IsFinishPage"/> property set to <c>true</c>.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.WizardStyle">
+            <summary>
+            Gets or sets the current <see cref="P:AvalonWizard.Wizard.WizardStyle"/>.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.EffectiveWizardStyle">
+            <summary>
+            Gets the effective wizard style.
+            </summary>
+            <remarks>
+            <para>
+            If the <see cref="P:AvalonWizard.Wizard.WizardStyle"/> is set to <see cref="F:AvalonWizard.WizardStyle.Auto"/>
+            then the effective value is <see cref="F:AvalonWizard.WizardStyle.Wizard97"/> on Windows XP and Windows 2003 Server,
+            and <see cref="F:AvalonWizard.WizardStyle.Aero"/> on Windows Vista or higher.
+            </para>
+            <para>
+            Otherwise the effective value is equal to <see cref="P:AvalonWizard.Wizard.WizardStyle"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:AvalonWizard.Wizard.Pages">
+            <summary>
+            Gets the list of wizard pages.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Wizard.NavigationStrategy">
+            <summary>
+            Gets or sets the navigation strategy.
+            </summary>
+            <seealso cref="T:AvalonWizard.INavigationStrategy"/>
+        </member>
+        <member name="E:AvalonWizard.Wizard.Finished">
+            <summary>
+            Raised when the wizard is successfully finished.
+            </summary>
+        </member>
+        <member name="E:AvalonWizard.Wizard.Cancelled">
+            <summary>
+            Raised when the wizard is cancelled.
+            </summary>
+        </member>
+        <member name="E:AvalonWizard.Wizard.CurrentPageChanged">
+            <summary>
+            Raised when the current page is changed.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Aero.DesktopWindowManager">
+            <summary>
+            Gets the information about Desktop Window Manager.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Aero.DesktopWindowManager.IsCompositionEnabled">
+            <summary>
+            Gets the value indicating whether DWM composition is enabled.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.Aero.DesktopWindowManager.IsSupported">
+            <summary>
+            Gets the value indicating whether the Desktop Window Manager is available on the operating system.
+            Returns <c>true</c> for Windows Vista and higher. 
+            Returns <c>false</c> for Windows XP and Windows 2003 Server.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.WizardStyle">
+            <summary>
+            Represents a wizard style.
+            </summary>
+            <remarks>
+            When <see cref="F:AvalonWizard.WizardStyle.Auto"/> is used, the actual style is automatically selected based on the OS version.
+            <list type="bullet">
+                <item>
+                    <term><see cref="F:AvalonWizard.WizardStyle.Wizard97"/></term>
+                    <description> is selected for Windows XP and Windows 2003 Server.</description>
+                </item>
+                <item>
+                    <term><see cref="F:AvalonWizard.WizardStyle.Aero"/></term>
+                    <description> is selected for Windows Vista or higher.</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="F:AvalonWizard.WizardStyle.Auto">
+            <summary>
+            <para>The style is automatically selected based on the OS version.</para>
+            <list type="bullet">
+                <item>
+                    <term><see cref="F:AvalonWizard.WizardStyle.Wizard97"/></term>
+                    <description> is selected for Windows XP and Windows 2003 Server.</description>
+                </item>
+                <item>
+                    <term><see cref="F:AvalonWizard.WizardStyle.Aero"/></term>
+                    <description> is selected for Windows Vista or higher.</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardStyle.Wizard97">
+            <summary>
+            Wizard 97 style.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardStyle.Aero">
+            <summary>
+            Aero Wizard style.
+            </summary>
+        </member>
+        <member name="T:AvalonWizard.Wizard97">
+            <summary>
+            A helper class providing attached properties for Wizard 97 style.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard97.GetSubtitle(System.Windows.DependencyObject)">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.WizardPage"/> subtitle.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard97.SetSubtitle(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Sets the <see cref="T:AvalonWizard.WizardPage"/> subtitle.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.Wizard97.SubtitleProperty">
+            <summary>
+            Identifies Subtitle attached property.
+            </summary>
+            <seealso cref="M:AvalonWizard.Wizard97.GetSubtitle(System.Windows.DependencyObject)"/>
+            <seealso cref="M:AvalonWizard.Wizard97.SetSubtitle(System.Windows.DependencyObject,System.String)"/>
+        </member>
+        <member name="M:AvalonWizard.Wizard97.GetIcon(System.Windows.DependencyObject)">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.WizardPage"/> icon.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.Wizard97.SetIcon(System.Windows.DependencyObject,System.Windows.Media.ImageSource)">
+            <summary>
+            Sets the <see cref="T:AvalonWizard.WizardPage"/> icon.
+            </summary>
+            <remarks>The icon dimensions must be 48x48.</remarks>
+        </member>
+        <member name="F:AvalonWizard.Wizard97.IconProperty">
+            <summary>
+            Identifies Subtitle attached property.
+            </summary>
+            <seealso cref="M:AvalonWizard.Wizard97.GetIcon(System.Windows.DependencyObject)"/>
+            <seealso cref="M:AvalonWizard.Wizard97.SetIcon(System.Windows.DependencyObject,System.Windows.Media.ImageSource)"/>
+        </member>
+        <member name="T:AvalonWizard.WizardPage">
+            <summary>
+            The page of <see cref="T:AvalonWizard.Wizard"/> control.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.IsFinishPageProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.IsFinishPage"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.AllowCancelProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.AllowCancel"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.AllowNextProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.AllowNext"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.AllowBackProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.AllowBack"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.AllowFinsihProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.AllowFinish"/> property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.ShowCancelProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.ShowCancel"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.ShowNextProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.ShowNext"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.ShowBackProperty">
+            <summary>
+            Identifies the <see cref="P:AvalonWizard.WizardPage.ShowBack"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.InitializeEvent">
+            <summary>
+            Identifies the <see cref="E:AvalonWizard.WizardPage.Initialize"/> routed event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPage.OnInitialize(AvalonWizard.WizardPageInitEventArgs)">
+            <summary>
+            Invoked just before showing the page.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.CommitEvent">
+            <summary>
+            Identifies the <see cref="E:AvalonWizard.WizardPage.Commit"/> routed event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPage.OnCommit(AvalonWizard.WizardPageConfirmEventArgs)">
+            <summary>
+            Invoked before going to the next page.
+            </summary>
+        </member>
+        <member name="F:AvalonWizard.WizardPage.RollbackEvent">
+            <summary>
+            Identifies the <see cref="E:AvalonWizard.WizardPage.Rollback"/> routed event.
+            </summary>
+        </member>
+        <member name="M:AvalonWizard.WizardPage.OnRollback(AvalonWizard.WizardPageConfirmEventArgs)">
+            <summary>
+            Invoked before going to the previous page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.Wizard">
+            <summary>
+            Gets the <see cref="T:AvalonWizard.Wizard"/> owing this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.NextPage">
+            <summary>
+            <para>
+            Gets or sets the next page that should be used when the user clicks the Next button 
+            or when the <see cref="M:AvalonWizard.Wizard.NextPage"/> method is called. 
+            </para>
+            <para>
+            This is used to override the default behavior of going to the next page 
+            in the sequence defined within the <see cref="P:AvalonWizard.Wizard.Pages"/> collection.
+            </para>
+            </summary>
+            <value>The wizard page to go to.</value>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.IsFinishPage">
+            <summary>
+            Identifies the page as a the last page of the wizard.
+            </summary>
+            <remarks>
+            You may set this property on several pages if your wizard requires non-linear navigation.
+            </remarks>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.AllowCancel">
+            <summary>
+            Gets or sets the value indicating whether the Cancel button is enabled on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.AllowNext">
+            <summary>
+            Gets or sets the value indicating whether the Next button is enabled on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.AllowBack">
+            <summary>
+            Gets or sets the value indicating whether the Back button is enabled on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.AllowFinish">
+            <summary>
+            Gets or sets the value indicating whether the Finish button is enabled on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.ShowCancel">
+            <summary>
+            Gets or sets the value indicating whether the Cancel button is visible on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.ShowNext">
+            <summary>
+            Gets or sets the value indicating whether the Next button is visible on this page.
+            </summary>
+        </member>
+        <member name="P:AvalonWizard.WizardPage.ShowBack">
+            <summary>
+            Gets or sets the value indicating whether the Back button is visible on this page.
+            </summary>
+        </member>
+        <member name="E:AvalonWizard.WizardPage.Initialize">
+            <summary>
+            Raised just before showing the page.
+            </summary>
+        </member>
+        <member name="E:AvalonWizard.WizardPage.Commit">
+            <summary>
+            Raised before going to the next page.
+            </summary>
+        </member>
+        <member name="E:AvalonWizard.WizardPage.Rollback">
+            <summary>
+            Raised before going to the previous page.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
