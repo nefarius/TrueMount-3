@@ -17,7 +17,43 @@
             </TabItem>
             <TabItem Header="Encrypted volumes" Name="tabItem2">
                 <Grid>
-                    <DataGrid AutoGenerateColumns="True" Height="200" HorizontalAlignment="Left" Margin="6,15,0,0" Name="dataGridVolumes" VerticalAlignment="Top" Width="509" />
+                    <DataGrid AutoGenerateColumns="False" 
+                              EnableRowVirtualization="True" 
+                              Height="Auto" 
+                              HorizontalAlignment="Stretch" 
+                              ItemsSource="{Binding}" 
+                              Margin="6,40,6,34" 
+                              Name="dataGridVolumes" 
+                              RowDetailsVisibilityMode="VisibleWhenSelected" 
+                              VerticalAlignment="Stretch" 
+                              Width="Auto" 
+                              CanUserResizeColumns="True" 
+                              CanUserReorderColumns="False" 
+                              CanUserAddRows="False" 
+                              CanUserResizeRows="False" 
+                              IsReadOnly="False" 
+                              RowEditEnding="dataGridVolumes_RowEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Label, Mode=OneWay}" Header="Label" Width="150" />
+                            <DataGridTextColumn Binding="{Binding Path=Path, Mode=OneWay}" Header="Aliases" />
+                            <DataGridTextColumn Binding="{Binding Path=DomainAliases, Mode=OneWay}" Header="Domain aliases" />
+                            <DataGridCheckBoxColumn Binding="{Binding Path=IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Active" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="buttonEditVolume" Content="Edit" Click="buttonEditVolume_Click" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="buttonDeleteVolume" Content="Delete" Click="buttonDeleteVolume_Click" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="TrueCrypt settings" Name="tabItem3">

@@ -19,6 +19,8 @@ namespace TrueMount_3.Windows
     /// </summary>
     public partial class ConfigurationWindow : Window
     {
+        public List<EncryptedContainerFile> list = null;
+
         public ConfigurationWindow()
         {
             InitializeComponent();
@@ -26,10 +28,26 @@ namespace TrueMount_3.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<EncryptedContainerFile> list = new List<EncryptedContainerFile>();
+            list = new List<EncryptedContainerFile>();
             EncryptedContainerFile ecf = new EncryptedContainerFile("C:\\lol.txt");
+            ecf.Label = "Secret Porn Collection";
             list.Add(ecf);
             dataGridVolumes.ItemsSource = list;
+        }
+
+        private void dataGridVolumes_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteVolume_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonEditVolume_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

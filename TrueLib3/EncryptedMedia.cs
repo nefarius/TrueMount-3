@@ -58,5 +58,10 @@ namespace TrueLib
         }
 
         public virtual bool IsOnline { get; set; }
+
+        public string Path
+        {
+            get { return this.ToString(); }
+        }
     }
 }
