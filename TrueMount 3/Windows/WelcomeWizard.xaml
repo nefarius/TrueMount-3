@@ -4,13 +4,15 @@
         Title="TrueMount 3 - First run" Height="472" Width="644" xmlns:my="http://schemas.pavel.fedarovich.com/winfx/2010/xaml/presentation" WindowStartupLocation="CenterScreen" Icon="/TrueMount%203;component/Icons/lock.ico">
     <my:Wizard Name="wizard1">
         <my:WizardPage Header="Welcome to TrueMount 3!">
+            <my:WizardPage.Background>
+                <ImageBrush ImageSource="/TrueMount%203;component/Images/Blue_Minimalistic_Background_by_77Matt77.jpg" />
+            </my:WizardPage.Background>
             <Grid Height="Auto" Name="grid1" Width="Auto">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185" />
                     <ColumnDefinition Width="50*" />
                     <ColumnDefinition Width="387*" />
                 </Grid.ColumnDefinitions>
-                <Image Source="../Images/Our_Secret___shh_by_Qinni.jpg" />
                 <TextBlock Grid.Column="2" Height="106" Margin="26,31,0,0" Name="textBlock1" Text="Welcome and thank you for your trust in me!" VerticalAlignment="Top" HorizontalAlignment="Left" Width="244" />
             </Grid>
         </my:WizardPage>

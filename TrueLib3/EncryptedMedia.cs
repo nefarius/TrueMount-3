@@ -24,6 +24,7 @@ namespace TrueLib
         public List<Program> PreMountPrograms { get; set; }
         public List<Program> PostMountPrograms { get; set; }
         public MountOptions MountOptions { get; set; }
+        public string Label { get; set; }
 
         public EncryptedMedia()
         {

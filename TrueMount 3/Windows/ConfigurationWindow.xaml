@@ -1,0 +1,28 @@
+﻿<Window x:Class="TrueMount_3.Windows.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TrueMount 3 - Configuration" Height="374" Width="577" Icon="/TrueMount%203;component/Icons/lock.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Padding="12">
+    <Grid Height="Auto" Name="grid1" Width="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="286*" />
+            <RowDefinition Height="46*" />
+        </Grid.RowDefinitions>
+        <Button Content="Save &amp; Close" Grid.Row="1" Margin="0,0,12,12" Name="button1" HorizontalAlignment="Right" Width="93" Height="26" VerticalAlignment="Bottom" />
+        <TabControl Margin="12" Name="tabControl1">
+            <TabItem Header="Behavior" Name="tabItem1">
+                <Grid>
+                    <CheckBox Content="Start program with windows" Height="16" HorizontalAlignment="Left" Margin="23,28,0,0" Name="checkBox1" VerticalAlignment="Top" />
+                    <CheckBox Content="Check for updates on program start" Height="16" HorizontalAlignment="Left" Margin="23,63,0,0" Name="checkBox2" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Encrypted volumes" Name="tabItem2">
+                <Grid>
+                    <DataGrid AutoGenerateColumns="True" Height="200" HorizontalAlignment="Left" Margin="6,15,0,0" Name="dataGridVolumes" VerticalAlignment="Top" Width="509" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="TrueCrypt settings" Name="tabItem3">
+                <Grid />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

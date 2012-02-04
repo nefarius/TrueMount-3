@@ -31,8 +31,8 @@ namespace TrueMount_3
 
         private void menuSettings_Click(object sender, RoutedEventArgs e)
         {
-            WelcomeWizard ww = new WelcomeWizard();
-            ww.ShowDialog();
+            ConfigurationWindow cw = new ConfigurationWindow();
+            cw.ShowDialog();
         }
     }
 }

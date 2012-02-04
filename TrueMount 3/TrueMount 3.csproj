@@ -66,6 +66,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\ConfigurationWindow.xaml.cs">
+      <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WelcomeWizard.xaml.cs">
       <DependentUpon>WelcomeWizard.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ConfigurationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WelcomeWizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Our_Secret___shh_by_Qinni.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Blue_Minimalistic_Background_by_77Matt77.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
