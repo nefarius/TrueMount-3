@@ -69,6 +69,12 @@
     <Compile Include="Windows\ConfigurationWindow.xaml.cs">
       <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ContainerWizard.xaml.cs">
+      <DependentUpon>ContainerWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewVolumeChoice.xaml.cs">
+      <DependentUpon>NewVolumeChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WelcomeWizard.xaml.cs">
       <DependentUpon>WelcomeWizard.xaml</DependentUpon>
     </Compile>
@@ -115,6 +121,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ContainerWizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewVolumeChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WelcomeWizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Blue_Minimalistic_Background_by_77Matt77.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\arrow-right.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

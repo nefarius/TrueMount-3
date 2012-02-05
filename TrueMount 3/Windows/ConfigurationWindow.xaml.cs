@@ -49,5 +49,10 @@ namespace TrueMount_3.Windows
         {
 
         }
+
+        private void buttonAddVolume_Click(object sender, RoutedEventArgs e)
+        {
+            new NewVolumeChoice().ShowDialog();
+        }
     }
 }

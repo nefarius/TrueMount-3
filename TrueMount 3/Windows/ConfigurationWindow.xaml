@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TrueMount_3.Windows.ConfigurationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TrueMount 3 - Configuration" Height="374" Width="577" Icon="/TrueMount%203;component/Icons/lock.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Padding="12">
+        Title="TrueMount 3 - Configuration" Height="430" Width="629" Icon="/TrueMount%203;component/Icons/lock.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Padding="12">
     <Grid Height="Auto" Name="grid1" Width="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="286*" />
@@ -18,25 +18,19 @@
             <TabItem Header="Encrypted volumes" Name="tabItem2">
                 <Grid>
                     <DataGrid AutoGenerateColumns="False" 
-                              EnableRowVirtualization="True" 
-                              Height="Auto" 
-                              HorizontalAlignment="Stretch" 
-                              ItemsSource="{Binding}" 
-                              Margin="6,40,6,34" 
+                              EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                              Margin="6,40,6,0" 
                               Name="dataGridVolumes" 
-                              RowDetailsVisibilityMode="VisibleWhenSelected" 
-                              VerticalAlignment="Stretch" 
-                              Width="Auto" 
+                              RowDetailsVisibilityMode="VisibleWhenSelected" Width="Auto" 
                               CanUserResizeColumns="True" 
                               CanUserReorderColumns="False" 
                               CanUserAddRows="False" 
                               CanUserResizeRows="False" 
                               IsReadOnly="False" 
-                              RowEditEnding="dataGridVolumes_RowEditEnding">
+                              RowEditEnding="dataGridVolumes_RowEditEnding" Height="206" VerticalAlignment="Top">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Label, Mode=OneWay}" Header="Label" Width="150" />
-                            <DataGridTextColumn Binding="{Binding Path=Path, Mode=OneWay}" Header="Aliases" />
-                            <DataGridTextColumn Binding="{Binding Path=DomainAliases, Mode=OneWay}" Header="Domain aliases" />
+                            <DataGridTextColumn Binding="{Binding Path=Label, Mode=OneWay}" Header="Label" Width="200" />
+                            <DataGridTextColumn Binding="{Binding Path=Path, Mode=OneWay}" Header="Device path" Width="200" />
                             <DataGridCheckBoxColumn Binding="{Binding Path=IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Active" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
@@ -54,6 +48,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button Content="Add volume..." Height="23" HorizontalAlignment="Left" Margin="6,252,0,0" Name="buttonAddVolume" VerticalAlignment="Top" Width="95" Click="buttonAddVolume_Click" />
                 </Grid>
             </TabItem>
             <TabItem Header="TrueCrypt settings" Name="tabItem3">
