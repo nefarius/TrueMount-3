@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TrueLib;
 
 namespace TrueMount_3.Windows
 {
@@ -25,6 +26,12 @@ namespace TrueMount_3.Windows
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void buttonNewContainer_Click(object sender, RoutedEventArgs e)
+        {
+            new ContainerWizard(new EncryptedContainerFile(null)).Show();
             this.Close();
         }
     }

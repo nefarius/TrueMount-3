@@ -1,8 +1,21 @@
 ﻿<Window x:Class="TrueMount_3.Windows.ContainerWizard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ContainerWizard" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="Configure new container file" Height="333" Width="497" xmlns:my="http://schemas.pavel.fedarovich.com/winfx/2010/xaml/presentation" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <my:Wizard Name="wizardContainerFile" my:Designer.PageIndex="2">
+        <my:WizardPage Header="Choose your container file">
+            <Grid Height="Auto" Name="grid1" Width="Auto">
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="40,40,0,0" Name="textBoxFileName" VerticalAlignment="Top" Width="316" IsReadOnly="True" Text="{Binding Path=FileName, Mode=TwoWay}" />
+                <Button Content="Search..." Height="23" Margin="362,39,0,0" Name="buttonSearch" VerticalAlignment="Top" Click="buttonSearch_Click" HorizontalAlignment="Left" Width="75" />
+            </Grid>
+        </my:WizardPage>
+        <my:WizardPage Header="Set a volume label">
+            <Grid Height="Auto" Name="grid2" Width="Auto">
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="39,28,0,0" Name="textBoxLabel" VerticalAlignment="Top" Width="258" Text="{Binding Path=Label, Mode=TwoWay}" />
+            </Grid>
+        </my:WizardPage>
+        <my:WizardPage>
+            <TextBox Height="23" Name="textBoxTmp" Width="183" Text="{Binding Path=FileName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        </my:WizardPage>
+    </my:Wizard>
 </Window>

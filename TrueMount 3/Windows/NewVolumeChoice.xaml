@@ -58,7 +58,7 @@
                     <TextBlock DockPanel.Dock="Left" FontSize="20" VerticalAlignment="Center" Text="A specific partition is encrypted."></TextBlock>
                 </DockPanel>
             </Button>
-            <Button HorizontalAlignment="Left" Margin="25,0,0,55" Name="buttonNewContainer" Width="350" Height="42" VerticalAlignment="Bottom">
+            <Button HorizontalAlignment="Left" Margin="25,0,0,55" Name="buttonNewContainer" Width="350" Height="42" VerticalAlignment="Bottom" Click="buttonNewContainer_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border CornerRadius="4">

@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TrueLib;
+using Microsoft.Win32;
 
 namespace TrueMount_3.Windows
 {
@@ -18,9 +20,27 @@ namespace TrueMount_3.Windows
     /// </summary>
     public partial class ContainerWizard : Window
     {
-        public ContainerWizard()
+        private EncryptedContainerFile container = null;
+
+        public ContainerWizard(EncryptedContainerFile file)
         {
             InitializeComponent();
+
+            container = file;
+
+            textBoxFileName.DataContext = container;
+            textBoxLabel.DataContext = container;
+            textBoxTmp.DataContext = container;
+        }
+
+        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog search = new OpenFileDialog();
+
+            if (search.ShowDialog() == (Nullable<bool>)true)
+            {
+                textBoxFileName.Text = search.FileName;
+            }
         }
     }
 }
