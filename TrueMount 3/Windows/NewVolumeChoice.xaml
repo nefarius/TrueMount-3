@@ -1,9 +1,9 @@
 ﻿<Window x:Class="TrueMount_3.Windows.NewVolumeChoice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NewVolumeChoice" Height="243" Width="495" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
+        Title="NewVolumeChoice" Height="243" Width="495" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Border BorderThickness="4" BorderBrush="Aquamarine" Opacity="20">
     <Grid>
-        
         <Button HorizontalAlignment="Left" Margin="25,12,0,0" Name="button1" VerticalAlignment="Top" Width="350">
             <DockPanel>
                 <Image Source="../Icons/arrow-right.ico" Height="40" />
@@ -13,15 +13,18 @@
             </DockPanel>
             <Button.Template>
                 <ControlTemplate TargetType="Button">
-                    <Border BorderThickness="0" CornerRadius="2" BorderBrush="Black">
+                    <Border CornerRadius="4">
                         <TextBlock>
                             <ContentPresenter />
                         </TextBlock>
                         <Border.Style>
-                            <Style TargetType="Border">
+                            <Style>
+                                <Setter Property="Border.BorderThickness" Value="1" />
+                                <Setter Property="Border.BorderBrush" Value="Gray" />
                                 <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="BorderThickness" Value="2" />
+                                    <Trigger Property="Border.IsMouseOver" Value="True">
+                                        <Setter Property="Border.BorderThickness" Value="2" />
+                                        <Setter Property="Border.BorderBrush" Value="Black" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -32,4 +35,5 @@
         </Button>
         <Button Content="Button" Height="52" HorizontalAlignment="Left" Margin="25,71,0,0" Name="button2" VerticalAlignment="Top" Width="257" />
     </Grid>
+    </Border>
 </Window>
