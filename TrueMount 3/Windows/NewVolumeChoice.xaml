@@ -6,7 +6,7 @@
     <Grid>
         <Button HorizontalAlignment="Left" Margin="25,0,0,161" Name="buttonNewDisk" Width="350" Height="42" VerticalAlignment="Bottom">
             <DockPanel>
-                <Image Source="../Icons/arrow-right.ico" Height="40" />
+                <Image Source="../Icons/arrow-right.ico" Height="40" Margin="0,0,6,0" />
                 <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" FontSize="20">
                     My entire hard drive is encrypted.
                 </TextBlock>
@@ -54,7 +54,7 @@
                     </ControlTemplate>
                 </Button.Template>
                 <DockPanel>
-                    <Image Height="40" Source="../Icons/arrow-right.ico" />
+                    <Image Height="40" Source="../Icons/arrow-right.ico" Margin="0,0,6,0" />
                     <TextBlock DockPanel.Dock="Left" FontSize="20" VerticalAlignment="Center" Text="A specific partition is encrypted."></TextBlock>
                 </DockPanel>
             </Button>
@@ -79,11 +79,11 @@
                     </ControlTemplate>
                 </Button.Template>
                 <DockPanel>
-                    <Image Height="40" Source="../Icons/arrow-right.ico" />
+                    <Image Height="40" Source="../Icons/arrow-right.ico" Margin="0,0,6,0" />
                     <TextBlock DockPanel.Dock="Left" FontSize="20" VerticalAlignment="Center" Text="I have an encrypted file."></TextBlock>
                 </DockPanel>
             </Button>
-            <Button HorizontalAlignment="Left" Margin="189,0,0,6" Name="buttonClose" VerticalAlignment="Bottom" Width="186" Click="buttonClose_Click">
+            <Button HorizontalAlignment="Left" Margin="189,0,0,6" Name="buttonClose" VerticalAlignment="Bottom" Width="Auto" Click="buttonClose_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border CornerRadius="4">
@@ -104,10 +104,10 @@
                     </ControlTemplate>
                 </Button.Template>
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Left" FontSize="20" Text="Oh, here I'm wrong." VerticalAlignment="Center" />
+                    <TextBlock DockPanel.Dock="Left" FontSize="20" Text="Oh, here I'm wrong." VerticalAlignment="Center" Margin="6,0" />
                 </DockPanel>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="25,6,0,206" Name="textBlock1" Text="Please tell me the type of the encrypted volume you would like to configure:" Width="350" Foreground="#FF002CFF" FontWeight="Normal" FontSize="18" TextTrimming="None" TextWrapping="Wrap" TextAlignment="Left" />
+            <TextBlock HorizontalAlignment="Left" Margin="25,6,0,0" Name="textBlock1" Text="Please tell me the type of the encrypted volume you would like to configure:" Width="350" Foreground="#FF002CFF" FontWeight="Normal" FontSize="18" TextTrimming="None" TextWrapping="Wrap" TextAlignment="Left" Height="53" VerticalAlignment="Top" />
         </Grid>
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
