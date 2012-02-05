@@ -12,6 +12,8 @@ namespace TrueLib
         public bool Removable { get; set; }
         public bool Timestamp { get; set; }
         public bool System { get; set; }
+        public bool Headerbak { get; set; }
+        public bool Recovery { get; set; }
 
         /// <summary>
         /// Returns a ready-to-use argument line string.
@@ -27,6 +29,10 @@ namespace TrueLib
                 mOpts.Append("/m ts ");
             if (System)
                 mOpts.Append("/m sm ");
+            if (Headerbak)
+                mOpts.Append("/m bk ");
+            if (Recovery)
+                mOpts.Append("/m recovery ");
 
             return mOpts.ToString().Trim();
         }

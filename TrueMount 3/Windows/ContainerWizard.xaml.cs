@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueLib;
 using Microsoft.Win32;
+using System.ComponentModel;
 
 namespace TrueMount_3.Windows
 {
@@ -28,9 +29,13 @@ namespace TrueMount_3.Windows
 
             container = file;
 
-            textBoxFileName.DataContext = container;
-            textBoxLabel.DataContext = container;
-            textBoxTmp.DataContext = container;
+#if DEBUG
+            container.FileName = "D:\\test.txt";
+            container.Label = "Secret porn collection";
+            container.MountOptions.Removable = true;
+#endif
+
+            wizardContainerFile.DataContext = container;
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
@@ -39,8 +44,15 @@ namespace TrueMount_3.Windows
 
             if (search.ShowDialog() == (Nullable<bool>)true)
             {
-                textBoxFileName.Text = search.FileName;
+                container.FileName = search.FileName;
+                BindingOperations.GetBindingExpressionBase(textBoxFileName, 
+                    TextBox.TextProperty).UpdateTarget(); 
             }
+        }
+
+        private void wizardContainerFile_Finished(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

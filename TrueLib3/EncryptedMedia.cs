@@ -33,6 +33,7 @@ namespace TrueLib
             this.TriggerDevices = new List<TriggerDevice>();
             this.PreMountPrograms = new List<Program>();
             this.PostMountPrograms = new List<Program>();
+            this.MountOptions = new MountOptions();
         }
 
         /// <summary>
