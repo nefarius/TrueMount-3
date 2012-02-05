@@ -1,6 +1,7 @@
 ﻿<Window x:Class="TrueMount_3.Windows.ContainerWizard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tl="clr-namespace:TrueLib;assembly=TrueLib3"
         Title="Configure new container file" Height="333" Width="497" xmlns:my="http://schemas.pavel.fedarovich.com/winfx/2010/xaml/presentation" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <my:Wizard Name="wizardContainerFile" my:Designer.PageIndex="5" Finished="wizardContainerFile_Finished">
         <my:WizardPage Header="Container file">
@@ -26,9 +27,9 @@
         <my:WizardPage Header="Drive letter">
             <Grid Height="Auto" Name="grid3" Width="Auto">
                 <RadioButton Content="Use this one:" Height="16" HorizontalAlignment="Left" Margin="45,23,0,0" Name="radioButtonLetterFixed" VerticalAlignment="Top" />
-                <RadioButton Content="Use the next free letter" Height="16" HorizontalAlignment="Left" Margin="45,58,0,0" Name="radioButtonLetterNextFree" VerticalAlignment="Top" />
+                <RadioButton Content="Use the next free letter" Height="16" HorizontalAlignment="Left" Margin="45,61,0,0" Name="radioButtonLetterNextFree" VerticalAlignment="Top" IsChecked="True" />
                 <RadioButton Content="Use a random free letter" Height="16" HorizontalAlignment="Left" Margin="45,95,0,0" Name="radioButtonLetterRandom" VerticalAlignment="Top" />
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="135,20,0,0" Name="comboBoxDriveLetters" VerticalAlignment="Top" Width="47" />
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="135,20,0,0" Name="comboBoxDriveLetters" VerticalAlignment="Top" Width="47" ItemsSource="{Binding Source={x:Static tl:DriveLetter.FreeDriveLetters}}" SelectedIndex="0" />
             </Grid>
         </my:WizardPage>
         <my:WizardPage Header="Mount options">

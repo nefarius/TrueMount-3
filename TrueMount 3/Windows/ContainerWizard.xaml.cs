@@ -52,7 +52,7 @@ namespace TrueMount_3.Windows
 
         private void wizardContainerFile_Finished(object sender, RoutedEventArgs e)
         {
-            
+            MessageBox.Show(DriveLetter.FreeDriveLetters[0]);
         }
     }
 }
