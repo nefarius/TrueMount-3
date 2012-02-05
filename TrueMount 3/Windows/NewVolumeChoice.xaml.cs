@@ -22,5 +22,10 @@ namespace TrueMount_3.Windows
         {
             InitializeComponent();
         }
+
+        private void buttonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿<Window x:Class="TrueMount_3.Windows.NewVolumeChoice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NewVolumeChoice" Height="243" Width="495" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Border BorderThickness="4" BorderBrush="Aquamarine" Opacity="20">
+        Title="NewVolumeChoice" Height="312" Width="431" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Opacity="0.8">
+    <Border BorderThickness="4" Opacity="20" CornerRadius="8">
     <Grid>
-        <Button HorizontalAlignment="Left" Margin="25,12,0,0" Name="button1" VerticalAlignment="Top" Width="350">
+        <Button HorizontalAlignment="Left" Margin="25,0,0,161" Name="buttonNewDisk" Width="350" Height="42" VerticalAlignment="Bottom">
             <DockPanel>
                 <Image Source="../Icons/arrow-right.ico" Height="40" />
                 <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" FontSize="20">
@@ -33,7 +33,87 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Button" Height="52" HorizontalAlignment="Left" Margin="25,71,0,0" Name="button2" VerticalAlignment="Top" Width="257" />
-    </Grid>
+            <Button HorizontalAlignment="Left" Margin="25,0,0,108" Name="buttonNewPartition" Width="350" Height="42" VerticalAlignment="Bottom">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4">
+                            <Border.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.BorderThickness" Value="2" />
+                                            <Setter Property="Control.BorderBrush" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Control.BorderThickness" Value="1" />
+                                    <Setter Property="Control.BorderBrush" Value="Gray" />
+                                </Style>
+                            </Border.Style>
+                            <TextBlock><ContentPresenter /></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <DockPanel>
+                    <Image Height="40" Source="../Icons/arrow-right.ico" />
+                    <TextBlock DockPanel.Dock="Left" FontSize="20" VerticalAlignment="Center" Text="A specific partition is encrypted."></TextBlock>
+                </DockPanel>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="25,0,0,55" Name="buttonNewContainer" Width="350" Height="42" VerticalAlignment="Bottom">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4">
+                            <Border.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.BorderThickness" Value="2" />
+                                            <Setter Property="Control.BorderBrush" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Control.BorderThickness" Value="1" />
+                                    <Setter Property="Control.BorderBrush" Value="Gray" />
+                                </Style>
+                            </Border.Style>
+                            <TextBlock><ContentPresenter /></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <DockPanel>
+                    <Image Height="40" Source="../Icons/arrow-right.ico" />
+                    <TextBlock DockPanel.Dock="Left" FontSize="20" VerticalAlignment="Center" Text="I have an encrypted file."></TextBlock>
+                </DockPanel>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="189,0,0,6" Name="buttonClose" VerticalAlignment="Bottom" Width="186" Click="buttonClose_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4">
+                            <Border.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.BorderThickness" Value="2" />
+                                            <Setter Property="Control.BorderBrush" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Control.BorderThickness" Value="1" />
+                                    <Setter Property="Control.BorderBrush" Value="Gray" />
+                                </Style>
+                            </Border.Style>
+                            <TextBlock><ContentPresenter /></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Left" FontSize="20" Text="Oh, here I'm wrong." VerticalAlignment="Center" />
+                </DockPanel>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="25,6,0,206" Name="textBlock1" Text="Please tell me the type of the encrypted volume you would like to configure:" Width="350" Foreground="#FF002CFF" FontWeight="Normal" FontSize="18" TextTrimming="None" TextWrapping="Wrap" TextAlignment="Left" />
+        </Grid>
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0238B7" Offset="0" />
+                <GradientStop Color="#FF9DD0FF" Offset="1" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
     </Border>
 </Window>
