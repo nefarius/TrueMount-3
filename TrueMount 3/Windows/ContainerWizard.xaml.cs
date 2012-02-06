@@ -25,15 +25,19 @@ namespace TrueMount_3.Windows
 
         public ContainerWizard(EncryptedContainerFile file)
         {
-            InitializeComponent();
-
             container = file;
 
 #if DEBUG
             container.FileName = "D:\\test.txt";
             container.Label = "Secret porn collection";
             container.MountOptions.Removable = true;
+            Password pw = new Password(PasswordType.Static);
+            pw.StaticPassword = "geheim";
+            pw.RemotePath = "/geheim/noch-geheimer.log";
+            container.Passwords.Add(pw);
 #endif
+
+            InitializeComponent();
 
             wizardContainerFile.DataContext = container;
         }
@@ -53,6 +57,12 @@ namespace TrueMount_3.Windows
         private void wizardContainerFile_Finished(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(DriveLetter.FreeDriveLetters[0]);
+        }
+
+        private void listBoxPasswords_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ListBox cur = sender as ListBox;
+            
         }
     }
 }

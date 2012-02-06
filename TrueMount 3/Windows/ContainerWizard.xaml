@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:tl="clr-namespace:TrueLib;assembly=TrueLib3"
-        Title="Configure new container file" Height="333" Width="497" xmlns:my="http://schemas.pavel.fedarovich.com/winfx/2010/xaml/presentation" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <my:Wizard Name="wizardContainerFile" my:Designer.PageIndex="5" Finished="wizardContainerFile_Finished">
+        Title="Configure container file" Height="333" Width="497" xmlns:my="http://schemas.pavel.fedarovich.com/winfx/2010/xaml/presentation" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <my:Wizard Name="wizardContainerFile" my:Designer.PageIndex="2" Finished="wizardContainerFile_Finished">
         <my:WizardPage Header="Container file">
             <Grid Height="Auto" Name="grid1" Width="Auto">
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="40,40,0,0" Name="textBoxFileName" VerticalAlignment="Top" Width="316" IsReadOnly="False" Text="{Binding Path=FileName}" />
@@ -16,7 +16,9 @@
             </Grid>
         </my:WizardPage>
         <my:WizardPage Header="Passwords">
-            <Grid Height="Auto" Name="grid8" Width="Auto" />
+            <Grid Height="Auto" Name="grid8" Width="Auto">
+                <ListBox Height="100" HorizontalAlignment="Left" Margin="57,28,0,0" Name="listBoxPasswords" VerticalAlignment="Top" Width="270" ItemsSource="{Binding Path=Passwords}" DisplayMemberPath="Label" MouseDoubleClick="listBoxPasswords_MouseDoubleClick" />
+            </Grid>
         </my:WizardPage>
         <my:WizardPage Header="Key files">
             <Grid Height="Auto" Name="grid7" Width="Auto" />

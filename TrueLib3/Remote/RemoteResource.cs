@@ -39,5 +39,12 @@ namespace TrueLib.Remote
         {
             get { return Path.Combine(Configuration.TempPath, Path.GetFileName(RemotePath)); }
         }
+        /// <summary>
+        /// Returns a formated label to identify the object by name.
+        /// </summary>
+        public string Label
+        {
+            get { return string.Format("{0}:{1}{2}", Hostname, Port, RemotePath); }
+        }
     }
 }
