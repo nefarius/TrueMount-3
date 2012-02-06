@@ -62,7 +62,10 @@ namespace TrueMount_3.Windows
         private void listBoxPasswords_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ListBox cur = sender as ListBox;
-            
+            PasswordWizard pwiz = new PasswordWizard(cur.SelectedItem as Password);
+            this.Hide();
+            pwiz.ShowDialog();
+            this.Show();
         }
     }
 }

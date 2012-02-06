@@ -75,6 +75,9 @@
     <Compile Include="Windows\NewVolumeChoice.xaml.cs">
       <DependentUpon>NewVolumeChoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\PasswordWizard.xaml.cs">
+      <DependentUpon>PasswordWizard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WelcomeWizard.xaml.cs">
       <DependentUpon>WelcomeWizard.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NewVolumeChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PasswordWizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
