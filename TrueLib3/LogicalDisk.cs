@@ -43,20 +43,35 @@ namespace TrueLib
         {
             get
             {
-                foreach (var drive in DriveInfo.GetDrives())
+                string guid = IdentityFile;
+
+                if (!string.IsNullOrEmpty(guid))
                 {
-                    string path = Path.Combine(drive.RootDirectory.Name, Configuration.IdentityFile);
-                    if(File.Exists(path))
+                    using (StreamReader sr = new StreamReader(guid))
                     {
-                        using (StreamReader sr = new StreamReader(path))
-                        {
-                            if (Guid == new Guid(sr.ReadLine()))
-                                return true;
-                        }
+                        if (Guid == new Guid(sr.ReadLine()))
+                            return true;
                     }
                 }
 
                 return false;
+            }
+        }
+
+        public string IdentityFile
+        {
+            get
+            {
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    string path = Path.Combine(drive.RootDirectory.Name, Configuration.IdentityFile);
+                    if (File.Exists(path))
+                    {
+                        return path;
+                    }
+                }
+
+                return string.Empty;
             }
         }
 

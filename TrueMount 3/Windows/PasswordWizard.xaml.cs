@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using TrueLib;
-using System.Threading;
 using AvalonWizard;
+using Microsoft.Win32;
+using TrueLib;
+using System.IO;
 
 namespace TrueMount_3.Windows
 {
@@ -42,13 +33,35 @@ namespace TrueMount_3.Windows
 
         private void wizardPassword_Finished(object sender, RoutedEventArgs e)
         {
-            // TODO: save changes or just throw back the object?
+            Wizard current = sender as Wizard;
+
+            if (current.CurrentPage == wpLocal)
+            {
+                LogicalDisk pwDevice = new LogicalDisk();
+                pwDevice.Denote(Path.GetPathRoot(textBoxLocalPath.Text));
+            }
+
+            if (current.CurrentPage == wpRemote)
+            {
+
+            }
+
             this.Close();
         }
 
         private void wizardPassword_Cancelled(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonOpenLocalFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog pwfile = new OpenFileDialog();
+
+            if (pwfile.ShowDialog() == (Nullable<bool>)true)
+            {
+                textBoxLocalPath.Text = pwfile.FileName;
+            }
         }
     }
 }
