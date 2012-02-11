@@ -42,7 +42,13 @@ namespace TrueMount_3.Windows
 
         private void wizardPassword_Finished(object sender, RoutedEventArgs e)
         {
-            
+            // TODO: save changes or just throw back the object?
+            this.Close();
+        }
+
+        private void wizardPassword_Cancelled(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

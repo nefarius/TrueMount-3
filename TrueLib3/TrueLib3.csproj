@@ -86,7 +86,7 @@
     <Compile Include="Remote\ResourceWebDAV.cs" />
     <Compile Include="SystemDevices.cs" />
     <Compile Include="TrueCryptConfig.cs" />
-    <Compile Include="TriggerDevice.cs" />
+    <Compile Include="LogicalDisk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassOverview.cd" />

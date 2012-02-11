@@ -20,7 +20,7 @@ namespace TrueLib
         public DriveLetter Letter { get; set; }
         // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
-        public List<TriggerDevice> TriggerDevices { get; set; }
+        public List<LogicalDisk> TriggerDevices { get; set; }
         public List<Program> PreMountPrograms { get; set; }
         public List<Program> PostMountPrograms { get; set; }
         public MountOptions MountOptions { get; set; }
@@ -30,7 +30,7 @@ namespace TrueLib
         {
             this.Passwords = new List<RemoteResource>();
             this.KeyFiles = new List<RemoteResource>();
-            this.TriggerDevices = new List<TriggerDevice>();
+            this.TriggerDevices = new List<LogicalDisk>();
             this.PreMountPrograms = new List<Program>();
             this.PostMountPrograms = new List<Program>();
             this.MountOptions = new MountOptions();

@@ -21,7 +21,7 @@ namespace TrueLib
         public bool AutostartService { get; set; }
         public bool StartSilent { get; set; }
         public TrueCryptConfig TrueCrypt { get; set; }
-        public List<TriggerDevice> TriggerDevices { get; set; }
+        public List<LogicalDisk> TriggerDevices { get; set; }
         public List<EncryptedDisk> EncryptedDisks { get; set; }
         public List<EncryptedPartition> EncryptedPartitions { get; set; }
         public List<EncryptedContainerFile> EncryptedContainerFiles { get; set; }
@@ -44,7 +44,7 @@ namespace TrueLib
         {
             // initiate empty references
             TrueCrypt = new TrueCryptConfig();
-            TriggerDevices = new List<TriggerDevice>();
+            TriggerDevices = new List<LogicalDisk>();
             EncryptedDisks = new List<EncryptedDisk>();
             EncryptedPartitions = new List<EncryptedPartition>();
             EncryptedContainerFiles = new List<EncryptedContainerFile>();
