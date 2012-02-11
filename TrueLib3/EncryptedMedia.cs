@@ -15,7 +15,7 @@ namespace TrueLib
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
         public bool ForceUnmount { get; set; }
-        public List<Password> Passwords { get; set; }
+        public List<RemoteResource> Passwords { get; set; }
         public List<RemoteResource> KeyFiles { get; set; }
         public DriveLetter Letter { get; set; }
         // TODO: implement some logic to handle the dismount event (or replace it?)
