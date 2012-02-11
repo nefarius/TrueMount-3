@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueLib;
 using System.Threading;
+using AvalonWizard;
 
 namespace TrueMount_3.Windows
 {
@@ -37,6 +38,11 @@ namespace TrueMount_3.Windows
         private void buttonRemote_Click(object sender, RoutedEventArgs e)
         {
             wizardPassword.NextPage(wpRemote);
+        }
+
+        private void wizardPassword_Finished(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
