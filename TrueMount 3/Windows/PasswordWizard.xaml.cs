@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueLib;
+using System.Threading;
 
 namespace TrueMount_3.Windows
 {
@@ -26,6 +27,16 @@ namespace TrueMount_3.Windows
             this.password = password;
 
             InitializeComponent();
+        }
+
+        private void buttonLocal_Click(object sender, RoutedEventArgs e)
+        {
+            wizardPassword.NextPage(wpLocal);
+        }
+
+        private void buttonRemote_Click(object sender, RoutedEventArgs e)
+        {
+            wizardPassword.NextPage(wpRemote);
         }
     }
 }

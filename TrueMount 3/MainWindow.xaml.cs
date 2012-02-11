@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueMount_3.Windows;
+using TrueLib;
 
 namespace TrueMount_3
 {
@@ -22,6 +23,8 @@ namespace TrueMount_3
         public MainWindow()
         {
             InitializeComponent();
+
+            new PasswordWizard(new Password(PasswordType.File)).Show();
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)
