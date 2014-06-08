@@ -4,6 +4,7 @@ using AvalonWizard;
 using Microsoft.Win32;
 using TrueLib;
 using System.IO;
+using TrueLib.Remote;
 
 namespace TrueMount_3.Windows
 {
@@ -12,13 +13,16 @@ namespace TrueMount_3.Windows
     /// </summary>
     public partial class PasswordWizard : Window
     {
-        private Password password = null;
+        private KeyItem password = null;
+        private string Protocol = string.Empty;
 
-        public PasswordWizard(Password password)
+        public PasswordWizard(KeyItem password)
         {
             this.password = password;
 
             InitializeComponent();
+
+            wizardPassword.DataContext = password;
         }
 
         private void buttonLocal_Click(object sender, RoutedEventArgs e)
@@ -43,7 +47,25 @@ namespace TrueMount_3.Windows
 
             if (current.CurrentPage == wpRemote)
             {
-
+                switch (comboBoxProtocol.Text.ToLower())
+                {
+                    case "cifs":
+                        break;
+                    case "ftp":
+                        break;
+                    case "ftpes":
+                        break;
+                    case "http":
+                        break;
+                    case "https":
+                        break;
+                    case "sftp":
+                        break;
+                    case "webdav":
+                        break;
+                    default:
+                        break;
+                }
             }
 
             this.Close();

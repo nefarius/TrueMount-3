@@ -6,9 +6,10 @@ using System.IO;
 
 namespace TrueLib.Remote
 {
-    public class ResourceLocal : RemoteResource
+    public class ResourceLocal : KeyItem
     {
         public LogicalDisk Device { get; set; }
+        public string FilePath { get; set; }
         /// <summary>
         /// Returns the path to the local resource.
         /// </summary>
@@ -18,10 +19,10 @@ namespace TrueLib.Remote
             {
                 if (Device != null)
                 {
-                    return Path.Combine(Path.GetPathRoot(Device.IdentityFile), RemotePath);
+                    return Path.Combine(Path.GetPathRoot(Device.IdentityFile), FilePath);
                 }
 
-                return RemotePath;
+                return FilePath;
             }
         }
     }

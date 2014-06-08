@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueMount_3.Windows;
 using TrueLib;
+using TrueLib.Remote;
 
 namespace TrueMount_3
 {
@@ -24,7 +25,11 @@ namespace TrueMount_3
         {
             InitializeComponent();
 
-            new PasswordWizard(new Password(PasswordType.File)).Show();
+            ResourceCIFS pw1 = new ResourceCIFS();
+            pw1.Hostname = "10.8.0.1";
+            pw1.Username = "nefarius";
+            pw1.Password = "secret";
+            new PasswordWizard(pw1).Show();
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)

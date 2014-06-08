@@ -8,7 +8,6 @@ namespace TrueLib.Remote
 {
     public class ResourceHTTP : RemoteResource
     {
-        internal string Protocol { get; set; }
         public override string CachedFileName
         {
             get

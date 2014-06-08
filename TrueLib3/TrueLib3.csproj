@@ -75,6 +75,7 @@
     <Compile Include="PinvokeWindowsNetworking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remote\KeyItem.cs" />
     <Compile Include="Remote\RemoteResource.cs" />
     <Compile Include="Remote\ResourceCIFS.cs" />
     <Compile Include="Remote\ResourceFTP.cs" />

@@ -46,5 +46,12 @@ namespace TrueLib.Remote
                 return LocalPath;
             }
         }
+
+        public ResourceCIFS()
+        {
+            // Surprise, different scheme and port =)
+            Protocol = "cifs";
+            Port = 445;
+        }
     }
 }

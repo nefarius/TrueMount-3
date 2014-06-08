@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrueLib;
+using TrueLib.Remote;
 using Microsoft.Win32;
 using System.ComponentModel;
 
@@ -31,10 +32,13 @@ namespace TrueMount_3.Windows
             container.FileName = "D:\\test.txt";
             container.Label = "Secret porn collection";
             container.MountOptions.Removable = true;
-            Password pw = new Password(PasswordType.Static);
-            pw.StaticPassword = "geheim";
-            pw.RemotePath = "/geheim/noch-geheimer.log";
-            container.Passwords.Add(pw);
+            ResourceCIFS pw1 = new ResourceCIFS();
+            pw1.Hostname = "core2quad";
+            pw1.Port = 445;
+            pw1.RemotePath = "/folder/secret/pw.txt";
+            pw1.Username = "admin";
+            pw1.Password = "lulz";
+            container.Passwords.Add(pw1);
 #endif
 
             InitializeComponent();
@@ -61,11 +65,13 @@ namespace TrueMount_3.Windows
 
         private void listBoxPasswords_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            /*
             ListBox cur = sender as ListBox;
-            PasswordWizard pwiz = new PasswordWizard(cur.SelectedItem as Password);
-            this.Hide();
-            pwiz.ShowDialog();
-            this.Show();
+                        PasswordWizard pwiz = new PasswordWizard(cur.SelectedItem as Password);
+                        this.Hide();
+                        pwiz.ShowDialog();
+                        this.Show();*/
+            
         }
     }
 }

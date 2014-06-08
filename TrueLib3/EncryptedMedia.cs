@@ -15,8 +15,8 @@ namespace TrueLib
         public bool IsActive { get; set; }
         public bool OpenExplorer { get; set; }
         public bool ForceUnmount { get; set; }
-        public List<RemoteResource> Passwords { get; set; }
-        public List<RemoteResource> KeyFiles { get; set; }
+        public List<KeyItem> Passwords { get; set; }
+        public List<KeyItem> KeyFiles { get; set; }
         public DriveLetter Letter { get; set; }
         // TODO: implement some logic to handle the dismount event (or replace it?)
         public bool TriggerDismount { get; set; }
@@ -28,8 +28,8 @@ namespace TrueLib
 
         public EncryptedMedia()
         {
-            this.Passwords = new List<RemoteResource>();
-            this.KeyFiles = new List<RemoteResource>();
+            this.Passwords = new List<KeyItem>();
+            this.KeyFiles = new List<KeyItem>();
             this.TriggerDevices = new List<LogicalDisk>();
             this.PreMountPrograms = new List<Program>();
             this.PostMountPrograms = new List<Program>();

@@ -6,12 +6,12 @@ using System.IO;
 
 namespace TrueLib.Remote
 {
-    public class RemoteResource
+    public class RemoteResource : KeyItem
     {
         /// <summary>
-        /// The file name of the downloaded remote file.
+        /// The short name of the protocol.
         /// </summary>
-        public virtual string CachedFileName { get; set; }
+        public string Protocol { get; set; }
         /// <summary>
         /// Hostname or IP-Address of the destination host.
         /// </summary>
@@ -38,13 +38,6 @@ namespace TrueLib.Remote
         public string LocalPath
         {
             get { return Path.Combine(Configuration.TempPath, Path.GetFileName(RemotePath)); }
-        }
-        /// <summary>
-        /// Returns a formated label to identify the object by name.
-        /// </summary>
-        public string Label
-        {
-            get { return string.Format("{0}:{1}{2}", Hostname, Port, RemotePath); }
         }
     }
 }

@@ -7,7 +7,7 @@ using TrueLib.Events;
 namespace TrueLib
 {
     [Serializable()]
-    public class Password : RemoteResource
+    public class Password : KeyItem
     {
         private PasswordType type;
         private string _staticPassword;

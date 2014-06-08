@@ -1,104 +1,280 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="TrueLib.DriveLetter" Collapsed="true">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+  <Class Name="TrueLib.Configuration" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAABQAAIAAAAAQAEAAAAAAA=</HashCode>
+      <HashCode>CAIAAIACSCAkIQAAAACQQAEAAABAEBiRQDJApQBRAgg=</HashCode>
+      <FileName>Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.DriveLetter" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAACAAAABQAAIAAAAAQAEAAAAAAA=</HashCode>
       <FileName>DriveLetter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrueLib.EncryptedContainerFile" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAABAAAA=</HashCode>
       <FileName>EncryptedContainerFile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrueLib.EncryptedDisk" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEEgAAAAAAAAACAAIAABAAAAAAAAAA=</HashCode>
       <FileName>EncryptedDisk.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrueLib.EncryptedMedia" Collapsed="true">
-    <Position X="2" Y="0.5" Width="1.5" />
+    <Position X="1.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAEAAAAAAAQACAAAAiAAAAIACAAAA=</HashCode>
+      <HashCode>CAAAAAAAEAAAgCIAEAAAAAAgQACAAAEiAAIAIACAAAA=</HashCode>
       <FileName>EncryptedMedia.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TrueLib.EncryptedPartition" Collapsed="true">
-    <Position X="3" Y="3.25" Width="1.5" />
+    <Position X="2.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAEgAAAAAAAAACAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>EncryptedPartition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TrueLib.KeyFile" Collapsed="true">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+  <Class Name="TrueLib.LogicalDisk" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>KeyFile.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAEkAAAAABAAACABICAAAAAAAAAAAA=</HashCode>
+      <FileName>LogicalDisk.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="TrueLib.MountOptions" Collapsed="true">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="19.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAoAAAAAAAAAKAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAACAAEAgAKAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>MountOptions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrueLib.Password" Collapsed="true">
-    <Position X="5.5" Y="1.5" Width="1.5" />
+    <Position X="5.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAACAAgAAQAAAAhAAAAAAEQAAAAAAA=</HashCode>
       <FileName>Password.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="TrueLib.Program" Collapsed="true">
+    <Position X="24.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAABQAAgAAAAAIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="TrueLib.SystemDevices" Collapsed="true">
-    <Position X="7.25" Y="1.5" Width="1.5" />
+    <Position X="19.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEBAAAAKACABACAAREggBABELAAASAgAABAEAABQ=</HashCode>
       <FileName>SystemDevices.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TrueLib.TriggerDevice" Collapsed="true">
-    <Position X="9" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEkAAAAAAAAACABIAAAAAAAAAAAgA=</HashCode>
-      <FileName>TriggerDevice.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="TrueLib.TrueCryptConfig" Collapsed="true">
-    <Position X="5.5" Y="2.5" Width="1.5" />
+    <Position X="21.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAKAAAAgAAAAAQAAAAAAAAgCAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>TrueCryptConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Dolinay.DetectorForm" Collapsed="true">
+    <Position X="24.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAABAIAEAAAAACAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>DriveDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dolinay.DriveDetectorEventArgs" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAA=</HashCode>
+      <FileName>DriveDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dolinay.DriveDetector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQYgAAAACAAgIAAgMAAAAAAEJAECAAICAJCQFoAAQA=</HashCode>
+      <FileName>DriveDetector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TrueLib.Events.PasswordPromptEventArgs" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\PasswordPromptEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.AlreadyMountedException" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\AlreadyMountedException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.CIFSException" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\CIFSException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.DriveLetterInUseException" Collapsed="true">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DriveLetterInUseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.MountException" Collapsed="true">
+    <Position X="26.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\MountException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.StaticPasswordException" Collapsed="true">
+    <Position X="26.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\StaticPasswordException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.TrueCryptException" Collapsed="true">
+    <Position X="23" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\TrueCryptException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.VolumeInactiveException" Collapsed="true">
+    <Position X="24.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\VolumeInactiveException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Exceptions.WinSCPException" Collapsed="true">
+    <Position X="26.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\WinSCPException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExtremeMirror.PinvokeWindowsNetworking" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAFIIABEBCEAGgAACACIEwAoFAgRMgCQBECACCogTBA=</HashCode>
+      <FileName>PinvokeWindowsNetworking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.KeyItem" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\KeyItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.RemoteResource" Collapsed="true">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAQAAAAAACCAAAAACAAAAAAAAgAA=</HashCode>
+      <FileName>Remote\RemoteResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceCIFS" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceCIFS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceFTP" Collapsed="true">
+    <Position X="17" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceFTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceFTPeS" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceFTPeS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceHTTP" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceHTTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceHTTPS" Collapsed="true">
+    <Position X="12.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceHTTPS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceLocal" Collapsed="true">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAACAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceLocal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceSFTP" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Remote\ResourceSFTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrueLib.Remote.ResourceWebDAV" Collapsed="true">
+    <Position X="14.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Remote\ResourceWebDAV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="TrueLib.IPhysicalMedia" Collapsed="true">
-    <Position X="9" Y="3.75" Width="1.5" />
+    <Position X="19.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IPhysicalMedia.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="TrueLib.DriveLetterType" Collapsed="true">
-    <Position X="5.5" Y="3.75" Width="1.5" />
+    <Position X="19.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>DriveLetter.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="TrueLib.Shemes" Collapsed="true">
-    <Position X="7.25" Y="3.75" Width="1.5" />
+  <Enum Name="TrueLib.PasswordType" Collapsed="true">
+    <Position X="21.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEEAAgAAAAAAAAAIAAAgAAAAAAAEAAAAAAABAACAAAA=</HashCode>
-      <FileName>Shemes.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAEAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Password.cs</FileName>
     </TypeIdentifier>
   </Enum>
+  <Delegate Name="Dolinay.DriveDetectorEventHandler" Collapsed="true">
+    <Position X="19.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DriveDetector.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
